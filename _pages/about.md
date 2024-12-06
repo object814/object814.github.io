@@ -19,7 +19,7 @@ redirect_from:
 
 Hi there! I am Haoyu, a current master student at [National University of Singapore](https://www.nus.edu.sg/), major in [robotics](https://cde.nus.edu.sg/me/graduate/msc-robotics/). Prior to that, I obtained my bachelor's degree in robotics engineering at [Beihang University](https://ev.buaa.edu.cn/). My research interest lies in robot learning, especially in general purpose robot manipulation. More specifically, I am focusing on representation learning, large pre-trained models, and continual learning. Currently I am under [Prof. Lin Shao](https://linsats.github.io/)'s supervision. Please feel free to ask me any questions regarding my research projects.
 
-**I am currently applying for PhD positions in robot learning across the world! If you are a professor/student who feel like I am a fit to your research group, and I am dumb engough to not recognize, please send me an email. I will highly appreciate it!**
+**I am currently applying for PhD positions in robot manipulation learning across the world starting as early as March 2025! If you are a professor/student who feels like I am a good fit to your research group, please send me an email. I will highly appreciate it!**
 
 
 # 🔥 News
@@ -67,17 +67,35 @@ ClothesNet: An Information-Rich 3D Garment Model Repository with Simulated Cloth
 
 # 🔧 Projects
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/ClothesNet.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/ME5400B.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-Vision-based Exoskeleton Evaluation with RGB cameras
+Prompt-Learning in Vision-Language-Action Model for robot manipulation –– A step forward to continual learning 
 
-NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/bioroboticslab/#) 
+NUS ME5400B course project
+
+<span style="font-size: 15px;">*2024.09-2024.12*</span>
+
+<span style="font-size: 15px;">Supervisor: [Lin Shao](https://linsats.github.io/), Advisors: [Chongkai Gao](https://chongkaigao.com/), [Zixuan Liu](https://panda-shawn.github.io/)</span>
+
+[Report](https://drive.google.com/file/d/10B5aHKWvnoIdX6kv1YqkAp62ejDWGtf9/view?usp=sharing)
+
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/ME5400A.gif' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+Vision-based Exoskeleton Pose Estimation with Simple RGB Cameras
+
+NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/bioroboticslab/#)
+
+<span style="font-size: 15px;">*2024.03-2024.06*</span>
 
 <span style="font-size: 15px;">Supervisor: [Haoyong Yu](https://cde.nus.edu.sg/bme/bioroboticslab/author/haoyong-yu/), Advisors: [Ashwin Narayan](https://cde.nus.edu.sg/bme/bioroboticslab/author/ashwin-narayan/), [Cindy Sia Ching Li](https://cde.nus.edu.sg/bme/bioroboticslab/author/cindy-sia-ching-li/), [Seyram Ofori
 ](https://cde.nus.edu.sg/bme/bioroboticslab/author/seyram-ofori/), [Shounak Bhattacharya](https://cde.nus.edu.sg/bme/bioroboticslab/author/shounak-bhattacharya/)</span>
 
-[Website](https://sites.google.com/view/clothesnet/) \| [Google Scholar Page](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:u-x6o8ySG0sC)
+[Report](https://drive.google.com/file/d/1gNs3HpIpQ59PC-283UBBNn4cAPPd2INB/view?usp=sharing)
 
 </div>
 </div>
@@ -86,6 +104,9 @@ NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/biorob
 # 🎖 Honors and Awards
 - *2023.06* Beihang Outstanding Graduates.
 - *2022.10* [Aubo robotics](https://www.aubo-cobot.com/public/) second class scholarship.
+- *2022.07* National ROBOCON Competition 2022, National First Prize.
+- *2021.11* ABU Asia-Pacific Robot Contest 2021, Mabuchi Special Prize.
+- *2021.04* Mathematical Contest in Modeling 2021, Meritorious Winner.
 
 # 📖 Educations
 - *2023.08 - 2025.01 (now)*, Master of Science Robotics, National University of Singapore.
