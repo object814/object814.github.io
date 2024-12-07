@@ -119,5 +119,6 @@ NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/biorob
 # 💻 Internships
 - *2019.05 - 2020.02*, [Lorem](https://github.com/), China. -->
 
+<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=QdI4Scbeh_wTSQJ38tEfbCGJgPxn5_Iw8JYWb7K8Evc&cl=ffffff&w=a"></script>
 
 <span style="font-size: 15px;">If you like the template of this homepage, welcome to star and fork Yi Ren’s open-sourced [template](https://github.com/RayeRen/acad-homepage.github.io). Modifications were down inspired by Zixuan's [homepage](https://panda-shawn.github.io/)</span>
