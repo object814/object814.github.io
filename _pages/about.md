@@ -119,7 +119,7 @@ NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/biorob
 # 💻 Internships
 - *2019.05 - 2020.02*, [Lorem](https://github.com/), China. -->
 
-<div style="width: 30%; margin: auto;">
+<div style="width: 30%; margin: 20px auto;">
     <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=QdI4Scbeh_wTSQJ38tEfbCGJgPxn5_Iw8JYWb7K8Evc&cl=ffffff&w=a"></script>
 </div>
 
