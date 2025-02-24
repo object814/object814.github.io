@@ -19,9 +19,6 @@ redirect_from:
 
 Hi there! I am Haoyu, a current master student at [National University of Singapore](https://www.nus.edu.sg/), major in [robotics](https://cde.nus.edu.sg/me/graduate/msc-robotics/). Prior to that, I obtained my bachelor's degree in robotics engineering at [Beihang University](https://ev.buaa.edu.cn/). My research interest lies in robot learning, especially in general purpose robot manipulation. More specifically, I am focusing on representation learning, large pre-trained models, and continual learning. Currently I am under [Prof. Lin Shao](https://linsats.github.io/)'s supervision. Please feel free to ask me any questions regarding my research projects.
 
-**I am currently applying for PhD positions in robot manipulation learning across the world starting as early as March 2025! If you are a professor/student who feels like I am a good fit to your research group, please send me an email. I will highly appreciate it!**
-
-
 # 🔥 News
 - *2024.06*: &nbsp;🎉🎉 One paper “ManiFoundation Model for General-Purpose Robotic Manipulation of Contact Synthesis with Arbitrary Objects and Robots” was accepted to IROS 2024 as <span style="color: red;">oral presentation<span>.  
 - *2024.03*: One paper “Generalizable Long-Horizon Manipulations with Large Language Models” was on Arxiv.
