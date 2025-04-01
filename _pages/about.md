@@ -99,6 +99,7 @@ NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/biorob
 
 
 # 🎖 Honors and Awards
+- *2025.01* National University of Singapore Graduate Honours (Highest Distinction).
 - *2023.06* Beihang Outstanding Graduates.
 - *2022.10* [Aubo robotics](https://www.aubo-cobot.com/public/) second class scholarship.
 - *2022.07* National ROBOCON Competition 2022, National First Prize.
@@ -106,7 +107,7 @@ NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/biorob
 - *2021.04* Mathematical Contest in Modeling 2021, Meritorious Winner.
 
 # 📖 Educations
-- *2023.08 - 2025.01 (now)*, Master of Science Robotics, National University of Singapore.
+- *2023.08 - 2025.01*, Master of Science Robotics, National University of Singapore.
 - *2019.09 - 2023.06*, Bachelor of Engineer in Robotics Engineering, Beihang University.
 
 <!-- # 💬 Invited Talks
