@@ -23,7 +23,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Haoyu Zhou 周淏宇"
   avatar           : "images/profile_img.jpeg"
-  bio              : "University of Oxford"
+  bio              : # "University of Oxford"
   location         : "Oxford, UK"
   employer         :
   pubmed           : 
