@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Haoyu Zhou (周淏宇)"
-description              : "MsC Robotics, National University of Singapore"
+description              : "DPhil Robotics, Univeristy of Oxford"
 repository               : "object814/MyPage.git.io"
 google_scholar_stats_use_cdn : true
 
@@ -23,12 +23,12 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Haoyu Zhou 周淏宇"
   avatar           : "images/profile_img.jpeg"
-  bio              : "National University of Singapore"
-  location         : "Singapore"
+  bio              : "University of Oxford"
+  location         : "Oxford, UK"
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=WFkhn04AAAAJ&hl=en"
-  email            : "zhouhaoyu01@u.nus.edu"
+  email            : "haoyu.zhou at oxfordrobotics dot institute"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
