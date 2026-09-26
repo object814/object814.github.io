@@ -20,11 +20,24 @@ redirect_from:
 Hi there! I am **Haoyu Zhou**, a first-year DPhil (PhD) student at the **[Applied Artificial Intelligence Lab](https://ori.ox.ac.uk/labs/a2i)**, University of Oxford. Before joining Oxford, I earned my Master's degree in Robotics from the National University of Singapore, where I was fortunate to work with [Professor Lin Shao](https://linsats.github.io/), and my bachelor's degree in Robotics Engineering from [Beihang University](https://ev.buaa.edu.cn/). My research interest lies in robot learning, especially in general purpose robot manipulation. More specifically, I focus on enabling world models in robotics to learn continuously in a modular and compositional way. Please feel free to ask me any questions regarding my research projects.
 
 # 🔥 News
+- *2026.09*: One paper “Benchmarking World Models for Continual Learning on Compositional Tasks” is now on arXiv and under review for ICRA 2027.
 - *2024.06*: &nbsp;🎉🎉 One paper “ManiFoundation Model for General-Purpose Robotic Manipulation of Contact Synthesis with Arbitrary Objects and Robots” was accepted to IROS 2024 as <span style="color: red;">oral presentation<span>.  
 - *2024.03*: One paper “Generalizable Long-Horizon Manipulations with Large Language Models” was on Arxiv.
 - *2023.07*: &nbsp;🎉🎉 One paper “ClothesNet: An Information-Rich 3D Garment Model Repository with Simulated Clothes Environment” was accepted to ICCV 2023.  
 
 # 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICRA 2027 (Under Review)</div><img src='images/CompositionalCL.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+Benchmarking World Models for Continual Learning on Compositional Tasks
+
+<span style="font-size: 15px;">**Haoyu Zhou**, [Joe Watson](https://joemwatson.github.io/), [Anson Lei](https://scholar.google.com/citations?user=ZR7KUuYAAAAJ&hl=en), [Ingmar Posner](https://ori.ox.ac.uk/people/ingmar-posner)</span>
+
+[Website](https://object814.github.io/Compositional-Continual-Learning/) \| [Google Scholar Page](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:qjMakFHDy7sC)
+
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">IROS 2024</div><img src='images/ManiFoundation.gif' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -107,6 +120,7 @@ NUS ME5400A course project @ [Biorobotics Lab](https://cde.nus.edu.sg/bme/biorob
 - *2021.04* Mathematical Contest in Modeling 2021, Meritorious Winner.
 
 # 📖 Educations
+- *2025.10 - present*, DPhil (PhD) in Robotics, University of Oxford.
 - *2023.08 - 2025.01*, Master of Science Robotics, National University of Singapore.
 - *2019.09 - 2023.06*, Bachelor of Engineer in Robotics Engineering, Beihang University.
 
