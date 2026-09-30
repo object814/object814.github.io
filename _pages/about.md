@@ -20,6 +20,7 @@ redirect_from:
 Hi there! I am **Haoyu Zhou**, a first-year DPhil (PhD) student at the **[Applied Artificial Intelligence Lab](https://ori.ox.ac.uk/labs/a2i)**, University of Oxford. Before joining Oxford, I earned my Master's degree in Robotics from the National University of Singapore, where I was fortunate to work with [Professor Lin Shao](https://linsats.github.io/), and my bachelor's degree in Robotics Engineering from [Beihang University](https://ev.buaa.edu.cn/). My research interest lies in robot learning, especially in general purpose robot manipulation. More specifically, I focus on enabling world models in robotics to learn continuously in a modular and compositional way. Please feel free to ask me any questions regarding my research projects.
 
 # 🔥 News
+- *2026.09*: &nbsp;🎉🎉 Our paper “Benchmarking World Models for Continual Learning on Compositional Tasks” was accepted to the [NeurIPS 2026 Continual World Models Workshop](https://continual-world-models-workshop.github.io/). See you in Sydney!
 - *2026.09*: One paper “Benchmarking World Models for Continual Learning on Compositional Tasks” is now on arXiv and under review for ICRA 2027.
 - *2024.06*: &nbsp;🎉🎉 One paper “ManiFoundation Model for General-Purpose Robotic Manipulation of Contact Synthesis with Arbitrary Objects and Robots” was accepted to IROS 2024 as <span style="color: red;">oral presentation<span>.  
 - *2024.03*: One paper “Generalizable Long-Horizon Manipulations with Large Language Models” was on Arxiv.
