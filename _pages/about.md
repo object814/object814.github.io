@@ -28,8 +28,10 @@ Hi there! I am **Haoyu Zhou**, a first-year DPhil (PhD) student at the **[Applie
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICRA 2027 (Under Review)</div><img src='images/CompositionalCL.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/CompositionalCL.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
+
+<div class="venue-tags" markdown="0"><span class="venue">NeurIPS 2026 Workshop</span><span class="venue pending">ICRA 2027 · Under Review</span></div>
 
 Benchmarking World Models for Continual Learning on Compositional Tasks
 
@@ -40,10 +42,12 @@ Benchmarking World Models for Continual Learning on Compositional Tasks
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">IROS 2024</div><img src='images/ManiFoundation.gif' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/ManiFoundation.gif' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-<span style="color: red;">(Oral)</span> ManiFoundation Model for General-Purpose Robotic Manipulation of Contact Synthesis with Arbitrary Objects and Robots
+<div class="venue-tags" markdown="0"><span class="venue">IROS 2024</span><span class="venue oral">Oral</span></div>
+
+ManiFoundation Model for General-Purpose Robotic Manipulation of Contact Synthesis with Arbitrary Objects and Robots
 
 <span style="font-size: 15px;">[Zhixuan Xu](https://ariszxxu.github.io/)\*, [Chongkai Gao](https://chongkaigao.com/)\*, [Zixuan Liu](https://panda-shawn.github.io/)\*, [Gang Yang](https://openreview.net/profile?id=~Gang_Yang8)\*, [Chenrui Tie](https://crtie.github.io/),[Haozhuo Zheng](http://zzdirty.cn/), **Haoyu Zhou**, [Weikun Peng](https://www.linkedin.com/in/weikun-peng-7731281b4/?originalSubdomain=sg), [Debang Wang](https://www.linkedin.com/in/debang-wang-5690b5158/?originalSubdomain=sg), [Tianrun Hu](https://h-tr.github.io/), Tianyi Chen, [Zhouliang Yu](https://scholar.google.com/citations?user=qUMjnPcAAAAJ&hl=en), [Lin Shao](https://linsats.github.io/)</span>
 
@@ -52,8 +56,10 @@ Benchmarking World Models for Continual Learning on Compositional Tasks
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Arxiv Preprint</div><img src='images/GenMani.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/GenMani.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
+
+<div class="venue-tags" markdown="0"><span class="venue pending">arXiv Preprint</span></div>
 
 Generalizable Long-Horizon Manipulations with Large Language Models
 
@@ -64,8 +70,10 @@ Generalizable Long-Horizon Manipulations with Large Language Models
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2023</div><img src='images/ClothesNet.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/ClothesNet.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
+
+<div class="venue-tags" markdown="0"><span class="venue">ICCV 2023</span></div>
 
 ClothesNet: An Information-Rich 3D Garment Model Repository with Simulated Clothes Environment
 
@@ -78,7 +86,7 @@ ClothesNet: An Information-Rich 3D Garment Model Repository with Simulated Cloth
 
 # 🔧 Projects
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/ME5400B.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/ME5400B.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 Prompt-Learning in Vision-Language-Action Model for robot manipulation –– A step forward to continual learning 
@@ -94,7 +102,7 @@ NUS ME5400B course project
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/ME5400A.gif' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/ME5400A.gif' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 Vision-based Exoskeleton Pose Estimation with Simple RGB Cameras

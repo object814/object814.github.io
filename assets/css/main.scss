@@ -97,13 +97,32 @@ h1:before, .anchor:before {
     margin-top: -$scroll_offset;
 }
 
-.badge {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    position: absolute;
-    margin-top: .5em;
-    margin-left: -.5em;
-    color: white;
+.venue-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4em;
+    margin-bottom: .5em;
+}
+
+.venue {
+    display: inline-block;
+    padding: .15em .6em;
+    border: 1px solid #00369f;
+    border-radius: 4px;
     background-color: #00369f;
-    font-size: .8em;
+    color: white;
+    font-size: .7em;
+    font-weight: 600;
+    letter-spacing: .02em;
+    line-height: 1.5;
+
+    &.pending {
+        background-color: transparent;
+        color: #00369f;
+    }
+
+    &.oral {
+        border-color: #c62828;
+        background-color: #c62828;
+    }
 }
