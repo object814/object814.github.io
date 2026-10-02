@@ -226,7 +226,7 @@
     var x = 0, vx = 0;                 // carriage position / velocity (px)
     var a1 = Math.PI * 0.62, a2 = -1.9; // joint angles (rad), y-up convention
     var elbowSign = -1;                 // which IK branch we are on
-    var pointer = null, running = false, visible = true;
+    var pointer = null, target = null, running = false, visible = true;
 
     function measure() {
       rect = svg.getBoundingClientRect();
@@ -274,8 +274,10 @@
       if (!visible) return;
       rect = svg.getBoundingClientRect();
       var by = H - CART_H, settled = true;
-      if (pointer) {
-        var px = pointer.x - rect.left, py = pointer.y - rect.top;
+      // only follow while the pointer is above the rail; below it, hold the last target
+      if (pointer && pointer.y - rect.top <= H) target = { x: pointer.x - rect.left, y: pointer.y - rect.top };
+      if (target) {
+        var px = target.x, py = target.y;
         // carriage: damped spring toward the pointer, clamped to the rail
         var tx = Math.max(CART_W / 2, Math.min(W - CART_W / 2, px));
         vx = (vx + (tx - x) * 0.004) * 0.9;
