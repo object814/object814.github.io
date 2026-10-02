@@ -462,6 +462,14 @@ a:hover .arrow { transform: translate(2px, -2px); }
 .footer__map { grid-column: 7 / span 3; max-width: 240px; }
 .footer__map img, .footer__map canvas { max-width: 100%; height: auto; }
 .footer__note { grid-column: 1 / span 9; color: var(--ink-3); font-size: var(--t-xs); }
+.footer__note a { text-decoration-color: var(--hair); }
+.spark {
+  width: 11px;
+  height: 11px;
+  margin-right: 4px;
+  vertical-align: -1px;
+  fill: var(--accent);
+}
 .footer__top {
   grid-column: 10 / -1;
   justify-self: end;
