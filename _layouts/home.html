@@ -61,11 +61,12 @@
         <dd>{{ a.location }}</dd>
       </div>
       <div>
-        <dt>Contact</dt>
+        <dt>Links</dt>
         <dd class="links">
           <a href="mailto:{{ a.email }}">Email<span class="arrow" aria-hidden="true">↗</span></a>
           <a href="{{ a.googlescholar }}">Google Scholar<span class="arrow" aria-hidden="true">↗</span></a>
-          <a href="https://github.com/{{ a.github }}">GitHub<span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://x.com/{{ a.x }}">X<span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="{{ a.cv | relative_url }}" download="Haoyu_Zhou_CV.pdf">CV<span class="arrow arrow--down" aria-hidden="true">↓</span></a>
         </dd>
       </div>
     </dl>

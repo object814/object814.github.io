@@ -22,6 +22,8 @@ author:
     - "United Kingdom"
   googlescholar : "https://scholar.google.com/citations?user=WFkhn04AAAAJ&hl=en"
   github        : "object814"
+  x             : "object814"
+  cv            : "CV_1002.pdf"   # path to the CV PDF in the repo root
 
 # Visitor map (mapmyvisitors.com). Leave blank to hide.
 mapmyvisitors_id: "NtcICbaT1M7PhxB3g6hsiegL8P0dth_Z8TcHHArKylo"

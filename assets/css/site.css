@@ -106,6 +106,7 @@ strong, b { font-weight: 600; }
   transition: transform .15s;
 }
 a:hover .arrow { transform: translate(2px, -2px); }
+a:hover .arrow--down { transform: translateY(2px); }
 
 /* ---------- Grid ---------- */
 
@@ -229,7 +230,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
   margin-bottom: 6px;
 }
 .facts dd { font-size: var(--t-m); font-weight: 500; line-height: 1.35; }
-.facts .links { display: flex; flex-wrap: wrap; column-gap: 18px; }
+.facts .links { display: flex; flex-wrap: wrap; column-gap: 14px; }
 
 /* ---------- Sections ---------- */
 
