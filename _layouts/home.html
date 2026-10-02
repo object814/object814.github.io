@@ -47,18 +47,6 @@
       <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="750">
     </figure>
 
-    <!-- Rail: a small two-link arm slides along the rule below and reaches for the cursor -->
-    <div class="rail" aria-hidden="true">
-      <svg class="arm" id="arm">
-        <line class="arm__l1" id="arm-l1"/>
-        <line class="arm__l2" id="arm-l2"/>
-        <g class="arm__grip" id="arm-grip"><path d="M8,-6 H0 V6 H8"/></g>
-        <circle class="arm__joint" id="arm-j2" r="3"/>
-        <circle class="arm__joint arm__joint--base" id="arm-j1" r="4.5"/>
-        <rect class="arm__cart" id="arm-cart" width="26" height="7"/>
-      </svg>
-    </div>
-
     <dl class="facts">
       <div>
         <dt>Position</dt>
@@ -212,98 +200,6 @@
 </footer>
 
 <script>
-  // Rail arm: a carriage (prismatic joint) slides along the rule, and a two-link
-  // planar arm solves inverse kinematics to reach for the pointer.
-  (function () {
-    var svg = document.getElementById('arm');
-    if (!svg) return;
-    var $ = function (id) { return document.getElementById(id); };
-    var l1 = $('arm-l1'), l2 = $('arm-l2'), j1 = $('arm-j1'), j2 = $('arm-j2'), grip = $('arm-grip'), cart = $('arm-cart');
-    var L1 = 60, L2 = 36, CART_H = 7, CART_W = 26;   // L1 > L2 keeps the tip clear of the base
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    var W = 0, H = 0, rect = null;
-    var x = 0, vx = 0;                 // carriage position / velocity (px)
-    var a1 = Math.PI * 0.62, a2 = -1.9; // joint angles (rad), y-up convention
-    var elbowSign = -1;                 // which IK branch we are on
-    var pointer = null, target = null, running = false, visible = true;
-
-    function measure() {
-      rect = svg.getBoundingClientRect();
-      W = rect.width; H = rect.height;
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      if (!x) x = Math.min(W * 0.35, W - CART_W);
-    }
-
-    function wrap(a) { while (a > Math.PI) a -= 2 * Math.PI; while (a < -Math.PI) a += 2 * Math.PI; return a; }
-
-    function solve(tx, ty, bx, by) {
-      var dx = tx - bx, dy = by - ty;            // y up
-      dy = Math.max(dy, 6);                       // stay above the rail
-      var d = Math.hypot(dx, dy);
-      var maxR = L1 + L2 - 0.5, minR = L1 - L2 + 8;
-      if (d > maxR) { dx *= maxR / d; dy *= maxR / d; d = maxR; }
-      if (d < minR) { dx *= minR / d; dy *= minR / d; d = minR; }
-      var c2 = (d * d - L1 * L1 - L2 * L2) / (2 * L1 * L2);
-      c2 = Math.max(-1, Math.min(1, c2));
-      function branch(sign) {
-        var t2 = sign * Math.acos(c2);
-        var t1 = Math.atan2(dy, dx) - Math.atan2(L2 * Math.sin(t2), L1 + L2 * Math.cos(t2));
-        return { t1: t1, t2: t2, elbowY: L1 * Math.sin(t1) };
-      }
-      var cur = branch(elbowSign);
-      // keep the current elbow branch unless it would dip below the rail
-      if (cur.elbowY < 4) { var other = branch(-elbowSign); if (other.elbowY > cur.elbowY) { elbowSign = -elbowSign; cur = other; } }
-      return cur;
-    }
-
-    function draw() {
-      var by = H - CART_H;
-      var ex = x + L1 * Math.cos(a1), ey = by - L1 * Math.sin(a1);
-      var wx = ex + L2 * Math.cos(a1 + a2), wy = ey - L2 * Math.sin(a1 + a2);
-      cart.setAttribute('x', x - CART_W / 2); cart.setAttribute('y', H - CART_H);
-      j1.setAttribute('cx', x); j1.setAttribute('cy', by);
-      l1.setAttribute('x1', x); l1.setAttribute('y1', by); l1.setAttribute('x2', ex); l1.setAttribute('y2', ey);
-      j2.setAttribute('cx', ex); j2.setAttribute('cy', ey);
-      l2.setAttribute('x1', ex); l2.setAttribute('y1', ey); l2.setAttribute('x2', wx); l2.setAttribute('y2', wy);
-      grip.setAttribute('transform', 'translate(' + wx + ' ' + wy + ') rotate(' + (-(a1 + a2) * 180 / Math.PI) + ')');
-    }
-
-    function step() {
-      running = false;
-      if (!visible) return;
-      rect = svg.getBoundingClientRect();
-      var by = H - CART_H, settled = true;
-      // only follow while the pointer is above the rail; below it, hold the last target
-      if (pointer && pointer.y - rect.top <= H) target = { x: pointer.x - rect.left, y: pointer.y - rect.top };
-      if (target) {
-        var px = target.x, py = target.y;
-        // carriage: damped spring toward the pointer, clamped to the rail
-        var tx = Math.max(CART_W / 2, Math.min(W - CART_W / 2, px));
-        vx = (vx + (tx - x) * 0.004) * 0.9;
-        vx = Math.max(-4, Math.min(4, vx));
-        x += vx;
-        // arm: ease joint angles toward the IK solution
-        var s = solve(px, py, x, by);
-        var d1 = wrap(s.t1 - a1), d2 = wrap(s.t2 - a2);
-        a1 += d1 * 0.1; a2 += d2 * 0.1;
-        settled = Math.abs(vx) < 0.02 && Math.abs(d1) < 0.002 && Math.abs(d2) < 0.002;
-      }
-      draw();
-      if (!settled) schedule();
-    }
-    function schedule() { if (!running) { running = true; requestAnimationFrame(step); } }
-
-    measure(); draw();
-    window.addEventListener('resize', function () { measure(); x = Math.min(x, W - CART_W / 2); draw(); });
-    if (reduce) return;   // static rest pose for reduced-motion users
-    window.addEventListener('pointermove', function (e) { pointer = { x: e.clientX, y: e.clientY }; schedule(); }, { passive: true });
-    window.addEventListener('scroll', function () { if (pointer) schedule(); }, { passive: true });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) schedule(); }).observe(svg);
-    }
-  })();
-
   // Open external links in a new tab; keep in-page anchors in place.
   document.querySelectorAll('a[href^="http"], a[href^="//"]').forEach(function (el) {
     if (el.hostname !== location.hostname) { el.target = '_blank'; el.rel = 'noopener'; }
