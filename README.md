@@ -1,7 +1,7 @@
 # object814.github.io
 
-Personal academic homepage of Haoyu Zhou, set in the International Typographic (Swiss) Style:
-a 12-column grid, flush-left sans-serif type (Inter / Inter Tight), black and white with a single red accent.
+Personal academic homepage of Haoyu Zhou in a modern Bauhaus style: primary colours (red, blue, yellow),
+elementary shapes (circle, square, triangle), geometric type (Jost) and heavy black lines.
 
 ## Editing content
 
@@ -23,7 +23,7 @@ Text fields accept Markdown links and **bold**. Quote any value that contains a 
 ## Structure
 
 - `_layouts/home.html` — the single-page template
-- `assets/css/swiss.css` — all styles (grid, type scale, light/dark tokens)
+- `assets/css/bauhaus.css` — all styles (colour and shape primitives, light/dark tokens)
 - `images/` — portrait, publication figures, favicons
 
 ## Local preview

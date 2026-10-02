@@ -8,27 +8,34 @@
   <meta property="og:title" content="{{ site.author.name }}">
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:image" content="{{ site.author.avatar | absolute_url }}">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0b0b0b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/images/favicon-16x16.png' | relative_url }}">
   <link rel="manifest" href="{{ '/images/site.webmanifest' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="{{ '/assets/css/swiss.css' | relative_url }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/bauhaus.css' | relative_url }}">
 </head>
 <body>
 
 {% assign a = site.author %}
+{% assign shapes = "circle,square,triangle,circle,square,triangle" | split: "," %}
+{% assign colors = "red,blue,yellow,blue,yellow,red" | split: "," %}
 
 <header class="bar">
-  <div class="grid bar__inner">
-    <a class="bar__name" href="#top">{{ a.name }}</a>
+  <div class="wrap bar__inner">
+    <a class="logo" href="#top" aria-label="{{ a.name }}, back to top">
+      <span class="logo__mark" aria-hidden="true">
+        <i class="shape shape--circle c-red"></i><i class="shape shape--square c-blue"></i><i class="shape shape--triangle c-yellow"></i>
+      </span>
+      <span class="logo__text">{{ a.name }}</span>
+    </a>
     <nav class="bar__nav" aria-label="Sections">
       {% for item in site.data.navigation.main %}
-      <a href="#{{ item.id }}"><span class="num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{{ item.title }}</a>
+      <a href="#{{ item.id }}">{{ item.title }}</a>
       {% endfor %}
     </nav>
   </div>
@@ -36,37 +43,51 @@
 
 <main id="top">
 
-  <!-- Masthead -->
-  <section class="hero grid">
-    <div class="hero__kicker">
-      <span class="square" aria-hidden="true"></span>{{ a.focus }}
+  <!-- Masthead: name on the left, a geometric poster on the right -->
+  <section class="hero wrap">
+    <div class="hero__text">
+      <p class="hero__kicker">{{ a.focus }}</p>
+      <h1 class="hero__name">
+        {% assign parts = a.name | split: ' ' %}{% for p in parts %}<span class="hero__line hero__line--{{ forloop.index }}">{{ p }}</span>{% endfor %}
+      </h1>
+      <p class="hero__native" lang="zh">{{ a.name_native }}</p>
     </div>
-    <h1 class="hero__name">
-      {% assign parts = a.name | split: ' ' %}{% for p in parts %}<span>{{ p }}</span>{% endfor %}
-    </h1>
-    <figure class="hero__portrait">
-      <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="750">
-    </figure>
-    <span class="hero__native" lang="zh">{{ a.name_native }}</span>
+
+    <div class="poster">
+      <i class="tile t-quarter c-red" style="grid-area: 1 / 1"></i>
+      <i class="tile t-blank" style="grid-area: 1 / 2"></i>
+      <i class="tile t-arch c-blue" style="grid-area: 1 / 3 / 2 / 5"></i>
+      <i class="tile t-circle c-yellow" style="grid-area: 2 / 1"></i>
+      <figure class="tile t-portrait" style="grid-area: 2 / 2 / 4 / 4">
+        <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="600">
+      </figure>
+      <i class="tile t-square c-red" style="grid-area: 2 / 4"><b class="dot"></b></i>
+      <i class="tile t-triangle c-blue" style="grid-area: 3 / 1"></i>
+      <i class="tile t-half c-yellow" style="grid-area: 3 / 4"></i>
+      <i class="tile t-square c-ink" style="grid-area: 4 / 1"><b class="dot dot--yellow"></b></i>
+      <i class="tile t-stripes" style="grid-area: 4 / 2"></i>
+      <i class="tile t-triangle-r c-red" style="grid-area: 4 / 3"></i>
+      <i class="tile t-quarter-br c-blue" style="grid-area: 4 / 4"></i>
+    </div>
 
     <dl class="facts">
-      <div>
+      <div class="fact c-yellow">
         <dt>Position</dt>
         <dd>{{ a.position }}</dd>
       </div>
-      <div>
+      <div class="fact c-blue">
         <dt>Affiliation</dt>
         <dd><a href="{{ a.affiliation_url }}">{{ a.affiliation }}</a></dd>
       </div>
-      <div>
+      <div class="fact c-red">
         <dt>Location</dt>
         <dd>{{ a.location }}</dd>
       </div>
-      <div>
+      <div class="fact c-paper">
         <dt>Contact</dt>
-        <dd class="links">
+        <dd class="fact__links">
           <a href="mailto:{{ a.email }}">Email</a>
-          <a href="{{ a.googlescholar }}">Google Scholar</a>
+          <a href="{{ a.googlescholar }}">Scholar</a>
           <a href="https://github.com/{{ a.github }}">GitHub</a>
         </dd>
       </div>
@@ -74,44 +95,45 @@
   </section>
 
   <!-- 01 About -->
-  <section class="section grid" id="about">
-    <h2 class="label"><span class="num">01</span>About</h2>
-    <div class="body prose">
+  <section class="section wrap" id="about">
+    <h2 class="head"><i class="shape shape--{{ shapes[0] }} c-{{ colors[0] }}" aria-hidden="true"></i><span class="head__num">01</span>About</h2>
+    <div class="about">
       {{ content }}
     </div>
   </section>
 
   <!-- 02 News -->
-  <section class="section grid" id="news">
-    <h2 class="label"><span class="num">02</span>News</h2>
-    <ol class="body rows">
+  <section class="section wrap" id="news">
+    <h2 class="head"><i class="shape shape--{{ shapes[1] }} c-{{ colors[1] }}" aria-hidden="true"></i><span class="head__num">02</span>News</h2>
+    <ol class="news">
       {% for n in site.data.news %}
-      <li class="row{% if n.highlight %} row--hl{% endif %}">
-        <time class="row__date">{{ n.date }}</time>
-        <div class="row__text">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+      <li class="news__item{% if n.highlight %} news__item--hl{% endif %}">
+        <time class="news__date">{{ n.date }}</time>
+        <div class="news__text">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
       </li>
       {% endfor %}
     </ol>
   </section>
 
   <!-- 03 Publications -->
-  <section class="section grid" id="publications">
-    <h2 class="label"><span class="num">03</span>Publications</h2>
-    <div class="body">
+  <section class="section wrap" id="publications">
+    <h2 class="head"><i class="shape shape--{{ shapes[2] }} c-{{ colors[2] }}" aria-hidden="true"></i><span class="head__num">03</span>Publications</h2>
+    <div class="cards">
       {% for p in site.data.publications %}
-      <article class="entry">
-        <div class="entry__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
-        <figure class="entry__figure">
+      {% assign ci = forloop.index0 | modulo: 3 %}
+      <article class="card card--{{ colors[ci] }}">
+        <figure class="card__figure">
           <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
+          <span class="card__num c-{{ colors[ci] }}">{{ forloop.index }}</span>
         </figure>
-        <div class="entry__text">
+        <div class="card__body">
           <ul class="tags">
             {% for v in p.venues %}<li class="tag tag--{{ v.kind }}">{{ v.label }}</li>{% endfor %}
           </ul>
-          <h3 class="entry__title">{{ p.title }}</h3>
-          <p class="entry__meta">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="entry__links">
-            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}<span aria-hidden="true">↗</span></a>{% endfor %}
+          <h3 class="card__title">{{ p.title }}</h3>
+          <p class="card__meta">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="card__links">
+            {% for l in p.links %}<a class="btn" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
           </p>
         </div>
       </article>
@@ -120,22 +142,23 @@
   </section>
 
   <!-- 04 Projects -->
-  <section class="section grid" id="projects">
-    <h2 class="label"><span class="num">04</span>Projects</h2>
-    <div class="body">
+  <section class="section wrap" id="projects">
+    <h2 class="head"><i class="shape shape--{{ shapes[3] }} c-{{ colors[3] }}" aria-hidden="true"></i><span class="head__num">04</span>Projects</h2>
+    <div class="cards">
       {% for p in site.data.projects %}
-      <article class="entry">
-        <div class="entry__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
-        <figure class="entry__figure">
+      {% assign ci = forloop.index0 | plus: 1 | modulo: 3 %}
+      <article class="card card--{{ colors[ci] }}">
+        <figure class="card__figure">
           <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
+          <span class="card__num c-{{ colors[ci] }}">{{ forloop.index }}</span>
         </figure>
-        <div class="entry__text">
-          <ul class="tags"><li class="tag tag--plain">{{ p.period }}</li></ul>
-          <h3 class="entry__title">{{ p.title }}</h3>
-          <p class="entry__meta">{{ p.context | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="entry__meta entry__meta--quiet">{{ p.people | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="entry__links">
-            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}<span aria-hidden="true">↗</span></a>{% endfor %}
+        <div class="card__body">
+          <ul class="tags"><li class="tag tag--date">{{ p.period }}</li></ul>
+          <h3 class="card__title">{{ p.title }}</h3>
+          <p class="card__meta card__meta--strong">{{ p.context | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="card__meta">{{ p.people | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="card__links">
+            {% for l in p.links %}<a class="btn" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
           </p>
         </div>
       </article>
@@ -144,28 +167,31 @@
   </section>
 
   <!-- 05 Honours -->
-  <section class="section grid" id="honours">
-    <h2 class="label"><span class="num">05</span>Honours &amp; Awards</h2>
-    <ol class="body rows">
+  <section class="section wrap" id="honours">
+    <h2 class="head"><i class="shape shape--{{ shapes[4] }} c-{{ colors[4] }}" aria-hidden="true"></i><span class="head__num">05</span>Honours &amp; Awards</h2>
+    <ol class="tiles">
       {% for h in site.data.honors %}
-      <li class="row row--3">
-        <time class="row__date">{{ h.date }}</time>
-        <div class="row__text row__text--strong">{{ h.title | markdownify | remove: '<p>' | remove: '</p>' }}</div>
-        <div class="row__aside">{{ h.org }}</div>
+      {% assign si = forloop.index0 | modulo: 3 %}
+      <li class="award">
+        <i class="shape shape--{{ shapes[si] }} c-{{ colors[si] }}" aria-hidden="true"></i>
+        <time class="award__date">{{ h.date }}</time>
+        <div class="award__title">{{ h.title | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+        <div class="award__org">{{ h.org }}</div>
       </li>
       {% endfor %}
     </ol>
   </section>
 
   <!-- 06 Education -->
-  <section class="section grid" id="education">
-    <h2 class="label"><span class="num">06</span>Education</h2>
-    <ol class="body rows">
+  <section class="section wrap" id="education">
+    <h2 class="head"><i class="shape shape--{{ shapes[5] }} c-{{ colors[5] }}" aria-hidden="true"></i><span class="head__num">06</span>Education</h2>
+    <ol class="edu">
       {% for e in site.data.education %}
-      <li class="row row--3">
-        <time class="row__date">{{ e.period }}</time>
-        <div class="row__text row__text--strong">{{ e.degree }}</div>
-        <div class="row__aside">{{ e.school }}</div>
+      {% assign ci = forloop.index0 | modulo: 3 %}
+      <li class="edu__item edu__item--{{ colors[ci] }}">
+        <time class="edu__period">{{ e.period }}</time>
+        <div class="edu__degree">{{ e.degree }}</div>
+        <div class="edu__school">{{ e.school }}</div>
       </li>
       {% endfor %}
     </ol>
@@ -173,21 +199,26 @@
 
 </main>
 
-<footer class="footer grid">
-  <div class="footer__name">{{ a.name }}<br><span lang="zh">{{ a.name_native }}</span></div>
-  <div class="footer__contact">
-    <span class="footer__label">Contact</span>
-    {{ a.email_display }}<br>
-    <a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a>
+<footer class="footer">
+  <div class="footer__band" aria-hidden="true">
+    <i class="c-red"></i><i class="c-yellow t-circle"></i><i class="c-blue"></i><i class="c-paper t-triangle"></i><i class="c-red t-circle"></i><i class="c-yellow"></i><i class="c-blue t-half"></i><i class="c-red t-triangle"></i>
   </div>
-  {% if site.mapmyvisitors_id %}
-  <div class="footer__map">
-    <span class="footer__label">Visitors</span>
-    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ site.mapmyvisitors_id }}&cl=ffffff&w=a"></script>
+  <div class="wrap footer__inner">
+    <div class="footer__name">{{ a.name }} <span lang="zh">{{ a.name_native }}</span></div>
+    <div class="footer__contact">
+      <span class="footer__label">Contact</span>
+      {{ a.email_display }}<br>
+      <a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a>
+    </div>
+    {% if site.mapmyvisitors_id %}
+    <div class="footer__map">
+      <span class="footer__label">Visitors</span>
+      <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ site.mapmyvisitors_id }}&cl=ffffff&w=a"></script>
+    </div>
+    {% endif %}
+    <p class="footer__note">Set in Jost. Built with Jekyll; earlier versions were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
+    <a class="footer__top" href="#top">Back to top ↑</a>
   </div>
-  {% endif %}
-  <p class="footer__note">Set in Inter &amp; Inter Tight. Built with Jekyll; earlier versions were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
-  <a class="footer__top" href="#top">Back to top ↑</a>
 </footer>
 
 <script>
