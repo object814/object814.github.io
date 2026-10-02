@@ -8,34 +8,31 @@
   <meta property="og:title" content="{{ site.author.name }}">
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:image" content="{{ site.author.avatar | absolute_url }}">
-  <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#e9e9e4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/images/favicon-16x16.png' | relative_url }}">
   <link rel="manifest" href="{{ '/images/site.webmanifest' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="{{ '/assets/css/bauhaus.css' | relative_url }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/brutalist.css' | relative_url }}">
 </head>
 <body>
 
 {% assign a = site.author %}
-{% assign shapes = "circle,square,triangle,circle,square,triangle" | split: "," %}
-{% assign colors = "red,blue,yellow,blue,yellow,red" | split: "," %}
 
-<header class="bar">
-  <div class="wrap bar__inner">
-    <a class="logo" href="#top" aria-label="{{ a.name }}, back to top">
-      <span class="logo__mark" aria-hidden="true">
-        <i class="shape shape--circle c-red"></i><i class="shape shape--square c-blue"></i><i class="shape shape--triangle c-yellow"></i>
-      </span>
-      <span class="logo__text">{{ a.name }}</span>
-    </a>
-    <nav class="bar__nav" aria-label="Sections">
+<!-- System bar -->
+<header class="sys">
+  <div class="sys__row">
+    <a class="sys__id" href="#top">HZ://home</a>
+    <span class="sys__cell sys__status"><i class="led" aria-hidden="true"></i>ONLINE</span>
+    <span class="sys__cell sys__hide-s">LOC 51.7520°N 1.2577°W</span>
+    <span class="sys__cell sys__hide-s">UTC <span id="clock">--:--:--</span></span>
+    <nav class="sys__nav" aria-label="Sections">
       {% for item in site.data.navigation.main %}
-      <a href="#{{ item.id }}">{{ item.title }}</a>
+      <a href="#{{ item.id }}">[{{ forloop.index | prepend: '0' | slice: -2, 2 }}] {{ item.title | upcase }}</a>
       {% endfor %}
     </nav>
   </div>
@@ -43,97 +40,87 @@
 
 <main id="top">
 
-  <!-- Masthead: name on the left, a geometric poster on the right -->
-  <section class="hero wrap">
-    <div class="hero__text">
-      <p class="hero__kicker">{{ a.focus }}</p>
+  <!-- Masthead -->
+  <section class="hero">
+    <div class="hero__path">~/{{ a.github }}/index — {{ a.focus | upcase }}</div>
+
+    <div class="hero__grid">
       <h1 class="hero__name">
-        {% assign parts = a.name | split: ' ' %}{% for p in parts %}<span class="hero__line hero__line--{{ forloop.index }}">{{ p }}</span>{% endfor %}
-      </h1>
-      <p class="hero__native" lang="zh">{{ a.name_native }}</p>
-    </div>
-
-    <div class="poster">
-      <i class="tile t-quarter c-red" style="grid-area: 1 / 1"></i>
-      <i class="tile t-blank" style="grid-area: 1 / 2"></i>
-      <i class="tile t-arch c-blue" style="grid-area: 1 / 3 / 2 / 5"></i>
-      <i class="tile t-circle c-yellow" style="grid-area: 2 / 1"></i>
-      <figure class="tile t-portrait" style="grid-area: 2 / 2 / 4 / 4">
-        <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="600">
+        {% assign parts = a.name | split: ' ' %}{% for p in parts %}<span>{{ p | upcase }}{% if forloop.last %}<i class="cursor" aria-hidden="true"></i>{% endif %}</span>{% endfor %}
+    </h1>
+      <figure class="frame">
+        <figcaption class="frame__bar"><span>IMG_0001.JPG</span><span>600×750</span></figcaption>
+        <div class="frame__img">
+          <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="750">
+          <i class="crosshair" aria-hidden="true"></i>
+        </div>
       </figure>
-      <i class="tile t-square c-red" style="grid-area: 2 / 4"><b class="dot"></b></i>
-      <i class="tile t-triangle c-blue" style="grid-area: 3 / 1"></i>
-      <i class="tile t-half c-yellow" style="grid-area: 3 / 4"></i>
-      <i class="tile t-square c-ink" style="grid-area: 4 / 1"><b class="dot dot--yellow"></b></i>
-      <i class="tile t-stripes" style="grid-area: 4 / 2"></i>
-      <i class="tile t-triangle-r c-red" style="grid-area: 4 / 3"></i>
-      <i class="tile t-quarter-br c-blue" style="grid-area: 4 / 4"></i>
-    </div>
 
-    <dl class="facts">
-      <div class="fact c-yellow">
-        <dt>Position</dt>
-        <dd>{{ a.position }}</dd>
-      </div>
-      <div class="fact c-blue">
-        <dt>Affiliation</dt>
-        <dd><a href="{{ a.affiliation_url }}">{{ a.affiliation }}</a></dd>
-      </div>
-      <div class="fact c-red">
-        <dt>Location</dt>
-        <dd>{{ a.location }}</dd>
-      </div>
-      <div class="fact c-paper">
-        <dt>Contact</dt>
-        <dd class="fact__links">
-          <a href="mailto:{{ a.email }}">Email</a>
-          <a href="{{ a.googlescholar }}">Scholar</a>
-          <a href="https://github.com/{{ a.github }}">GitHub</a>
-        </dd>
-      </div>
-    </dl>
+      <dl class="kv">
+        <div><dt>NAME</dt><dd>{{ a.name }} <span lang="zh">{{ a.name_native }}</span></dd></div>
+        <div><dt>ROLE</dt><dd>{{ a.position }}</dd></div>
+        <div><dt>UNIT</dt><dd><a href="{{ a.affiliation_url }}">{{ a.affiliation }}</a></dd></div>
+        <div><dt>LOCATION</dt><dd>{{ a.location }}</dd></div>
+        <div><dt>CONTACT</dt><dd>{{ a.email_display }}</dd></div>
+        <div class="kv__links">
+          <dt>LINKS</dt>
+          <dd>
+            <a class="key" href="mailto:{{ a.email }}">EMAIL</a>
+            <a class="key" href="{{ a.googlescholar }}">SCHOLAR</a>
+            <a class="key" href="https://github.com/{{ a.github }}">GITHUB</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
   </section>
 
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      {% for i in (1..2) %}<span>ROBOT LEARNING /// WORLD MODELS /// CONTINUAL LEARNING /// COMPOSITIONALITY /// GENERAL-PURPOSE MANIPULATION /// OXFORD A2I /// </span>{% endfor %}
+    </div>
+  </div>
+
   <!-- 01 About -->
-  <section class="section wrap" id="about">
-    <h2 class="head"><i class="shape shape--{{ shapes[0] }} c-{{ colors[0] }}" aria-hidden="true"></i><span class="head__num">01</span>About</h2>
-    <div class="about">
+  <section class="sec" id="about">
+    <h2 class="sec__head"><span>## 01 / ABOUT</span><span class="sec__meta">README.md</span></h2>
+    <div class="sec__body about">
       {{ content }}
     </div>
   </section>
 
   <!-- 02 News -->
-  <section class="section wrap" id="news">
-    <h2 class="head"><i class="shape shape--{{ shapes[1] }} c-{{ colors[1] }}" aria-hidden="true"></i><span class="head__num">02</span>News</h2>
-    <ol class="news">
+  <section class="sec" id="news">
+    <h2 class="sec__head"><span>## 02 / NEWS</span><span class="sec__meta">{{ site.data.news | size }} ENTRIES · TAIL -F</span></h2>
+    <ol class="sec__body log">
       {% for n in site.data.news %}
-      <li class="news__item{% if n.highlight %} news__item--hl{% endif %}">
-        <time class="news__date">{{ n.date }}</time>
-        <div class="news__text">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+      <li class="log__line{% if n.highlight %} log__line--hl{% endif %}">
+        <time class="log__ts">[{{ n.date }}]</time>
+        <span class="log__lvl">{% if n.highlight %}ACCEPT{% else %}INFO{% endif %}</span>
+        <span class="log__msg">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</span>
       </li>
       {% endfor %}
     </ol>
   </section>
 
   <!-- 03 Publications -->
-  <section class="section wrap" id="publications">
-    <h2 class="head"><i class="shape shape--{{ shapes[2] }} c-{{ colors[2] }}" aria-hidden="true"></i><span class="head__num">03</span>Publications</h2>
-    <div class="cards">
+  <section class="sec" id="publications">
+    <h2 class="sec__head"><span>## 03 / PUBLICATIONS</span><span class="sec__meta">{{ site.data.publications | size }} RECORDS</span></h2>
+    <div class="sec__body">
       {% for p in site.data.publications %}
-      {% assign ci = forloop.index0 | modulo: 3 %}
-      <article class="card card--{{ colors[ci] }}">
-        <figure class="card__figure">
+      <article class="rec">
+        <div class="rec__id">PUB-{{ forloop.index | prepend: '00' | slice: -3, 3 }}<span>{{ p.year }}</span></div>
+        <figure class="rec__fig">
           <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
-          <span class="card__num c-{{ colors[ci] }}">{{ forloop.index }}</span>
         </figure>
-        <div class="card__body">
+        <div class="rec__body">
           <ul class="tags">
-            {% for v in p.venues %}<li class="tag tag--{{ v.kind }}">{{ v.label }}</li>{% endfor %}
+            {% for v in p.venues %}<li class="tag tag--{{ v.kind }}">{{ v.label | upcase }}</li>{% endfor %}
           </ul>
-          <h3 class="card__title">{{ p.title }}</h3>
-          <p class="card__meta">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="card__links">
-            {% for l in p.links %}<a class="btn" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+          <h3 class="rec__title">{{ p.title }}</h3>
+          <p class="rec__authors"><span class="rec__key">AUTHORS:</span> {{ p.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="rec__links">
+            {% for l in p.links %}<a class="key" href="{{ l.url }}">{{ l.label | upcase }} ↗</a>{% endfor %}
           </p>
         </div>
       </article>
@@ -142,23 +129,22 @@
   </section>
 
   <!-- 04 Projects -->
-  <section class="section wrap" id="projects">
-    <h2 class="head"><i class="shape shape--{{ shapes[3] }} c-{{ colors[3] }}" aria-hidden="true"></i><span class="head__num">04</span>Projects</h2>
-    <div class="cards">
+  <section class="sec" id="projects">
+    <h2 class="sec__head"><span>## 04 / PROJECTS</span><span class="sec__meta">{{ site.data.projects | size }} RECORDS</span></h2>
+    <div class="sec__body">
       {% for p in site.data.projects %}
-      {% assign ci = forloop.index0 | plus: 1 | modulo: 3 %}
-      <article class="card card--{{ colors[ci] }}">
-        <figure class="card__figure">
+      <article class="rec">
+        <div class="rec__id">PRJ-{{ forloop.index | prepend: '00' | slice: -3, 3 }}<span>{{ p.period | slice: 0, 4 }}</span></div>
+        <figure class="rec__fig">
           <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
-          <span class="card__num c-{{ colors[ci] }}">{{ forloop.index }}</span>
         </figure>
-        <div class="card__body">
+        <div class="rec__body">
           <ul class="tags"><li class="tag tag--date">{{ p.period }}</li></ul>
-          <h3 class="card__title">{{ p.title }}</h3>
-          <p class="card__meta card__meta--strong">{{ p.context | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="card__meta">{{ p.people | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="card__links">
-            {% for l in p.links %}<a class="btn" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+          <h3 class="rec__title">{{ p.title }}</h3>
+          <p class="rec__authors"><span class="rec__key">CONTEXT:</span> {{ p.context | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="rec__authors"><span class="rec__key">PEOPLE:</span> {{ p.people | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="rec__links">
+            {% for l in p.links %}<a class="key" href="{{ l.url }}">{{ l.label | upcase }} ↗</a>{% endfor %}
           </p>
         </div>
       </article>
@@ -167,58 +153,66 @@
   </section>
 
   <!-- 05 Honours -->
-  <section class="section wrap" id="honours">
-    <h2 class="head"><i class="shape shape--{{ shapes[4] }} c-{{ colors[4] }}" aria-hidden="true"></i><span class="head__num">05</span>Honours &amp; Awards</h2>
-    <ol class="tiles">
-      {% for h in site.data.honors %}
-      {% assign si = forloop.index0 | modulo: 3 %}
-      <li class="award">
-        <i class="shape shape--{{ shapes[si] }} c-{{ colors[si] }}" aria-hidden="true"></i>
-        <time class="award__date">{{ h.date }}</time>
-        <div class="award__title">{{ h.title | markdownify | remove: '<p>' | remove: '</p>' }}</div>
-        <div class="award__org">{{ h.org }}</div>
-      </li>
-      {% endfor %}
-    </ol>
+  <section class="sec" id="honours">
+    <h2 class="sec__head"><span>## 05 / HONOURS &amp; AWARDS</span><span class="sec__meta">SELECT * ORDER BY DATE DESC</span></h2>
+    <div class="sec__body table-wrap">
+      <table class="tbl">
+        <thead><tr><th>DATE</th><th>AWARD</th><th>ISSUER</th></tr></thead>
+        <tbody>
+          {% for h in site.data.honors %}
+          <tr>
+            <td class="tbl__date">{{ h.date }}</td>
+            <td class="tbl__main">{{ h.title | markdownify | remove: '<p>' | remove: '</p>' }}</td>
+            <td class="tbl__aux">{{ h.org }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <!-- 06 Education -->
-  <section class="section wrap" id="education">
-    <h2 class="head"><i class="shape shape--{{ shapes[5] }} c-{{ colors[5] }}" aria-hidden="true"></i><span class="head__num">06</span>Education</h2>
-    <ol class="edu">
-      {% for e in site.data.education %}
-      {% assign ci = forloop.index0 | modulo: 3 %}
-      <li class="edu__item edu__item--{{ colors[ci] }}">
-        <time class="edu__period">{{ e.period }}</time>
-        <div class="edu__degree">{{ e.degree }}</div>
-        <div class="edu__school">{{ e.school }}</div>
-      </li>
-      {% endfor %}
-    </ol>
+  <section class="sec" id="education">
+    <h2 class="sec__head"><span>## 06 / EDUCATION</span><span class="sec__meta">{{ site.data.education | size }} RECORDS</span></h2>
+    <div class="sec__body table-wrap">
+      <table class="tbl">
+        <thead><tr><th>PERIOD</th><th>DEGREE</th><th>INSTITUTION</th></tr></thead>
+        <tbody>
+          {% for e in site.data.education %}
+          <tr{% if forloop.first %} class="tbl__row--now"{% endif %}>
+            <td class="tbl__date">{{ e.period }}</td>
+            <td class="tbl__main">{{ e.degree }}</td>
+            <td class="tbl__aux">{{ e.school }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </section>
 
 </main>
 
-<footer class="footer">
-  <div class="footer__band" aria-hidden="true">
-    <i class="c-red"></i><i class="c-yellow t-circle"></i><i class="c-blue"></i><i class="c-paper t-triangle"></i><i class="c-red t-circle"></i><i class="c-yellow"></i><i class="c-blue t-half"></i><i class="c-red t-triangle"></i>
-  </div>
-  <div class="wrap footer__inner">
-    <div class="footer__name">{{ a.name }} <span lang="zh">{{ a.name_native }}</span></div>
-    <div class="footer__contact">
-      <span class="footer__label">Contact</span>
+<footer class="foot">
+  <div class="foot__grid">
+    <div class="foot__cell">
+      <span class="foot__label">// CONTACT</span>
       {{ a.email_display }}<br>
-      <a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a>
+      <a href="{{ a.googlescholar }}">GOOGLE SCHOLAR</a> · <a href="https://github.com/{{ a.github }}">GITHUB</a>
     </div>
     {% if site.mapmyvisitors_id %}
-    <div class="footer__map">
-      <span class="footer__label">Visitors</span>
+    <div class="foot__cell foot__map">
+      <span class="foot__label">// VISITORS</span>
       <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ site.mapmyvisitors_id }}&cl=ffffff&w=a"></script>
     </div>
     {% endif %}
-    <p class="footer__note">Set in Jost. Built with Jekyll; earlier versions were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
-    <a class="footer__top" href="#top">Back to top ↑</a>
+    <div class="foot__cell">
+      <span class="foot__label">// BUILD</span>
+      JEKYLL · {{ site.time | date: "%Y-%m-%d" }}<br>
+      SET IN JETBRAINS MONO + SPACE GROTESK<br>
+      ORIGINALLY BASED ON <a href="https://github.com/RayeRen/acad-homepage.github.io">ACADHOMEPAGE</a>
+    </div>
   </div>
+  <div class="foot__eof"><span>EOF</span><a href="#top">[↑ RETURN TO TOP]</a></div>
 </footer>
 
 <script>
@@ -226,6 +220,13 @@
   document.querySelectorAll('a[href^="http"], a[href^="//"]').forEach(function (el) {
     if (el.hostname !== location.hostname) { el.target = '_blank'; el.rel = 'noopener'; }
   });
+  // UTC clock in the system bar.
+  (function () {
+    var el = document.getElementById('clock');
+    if (!el) return;
+    function tick() { el.textContent = new Date().toISOString().slice(11, 19); }
+    tick(); setInterval(tick, 1000);
+  })();
 </script>
 </body>
 </html>

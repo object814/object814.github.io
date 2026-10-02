@@ -1,7 +1,7 @@
 # object814.github.io
 
-Personal academic homepage of Haoyu Zhou in a modern Bauhaus style: primary colours (red, blue, yellow),
-elementary shapes (circle, square, triangle), geometric type (Jost) and heavy black lines.
+Personal academic homepage of Haoyu Zhou in a tech-brutalist style: exposed grid and hard 2px lines,
+monospace type (JetBrains Mono) with Space Grotesk display, log- and table-style lists, one acid-lime accent.
 
 ## Editing content
 
@@ -23,7 +23,7 @@ Text fields accept Markdown links and **bold**. Quote any value that contains a 
 ## Structure
 
 - `_layouts/home.html` — the single-page template
-- `assets/css/bauhaus.css` — all styles (colour and shape primitives, light/dark tokens)
+- `assets/css/brutalist.css` — all styles (light/dark tokens, grid, records, tables)
 - `images/` — portrait, publication figures, favicons
 
 ## Local preview
