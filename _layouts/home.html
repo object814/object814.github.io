@@ -82,10 +82,12 @@
   <!-- 2 News -->
   <section class="section grid" id="news">
     <h2 class="label"><span class="num">02</span>News</h2>
+    {% assign latest_year = site.data.news.first.date | slice: 0, 4 %}
     <ol class="body rows">
       {% for n in site.data.news %}
-      <li class="row{% if n.highlight %} row--hl{% endif %}">
-        <time class="row__date">{{ n.date }}</time>
+      {% assign n_year = n.date | slice: 0, 4 %}
+      <li class="row{% if n.highlight %} row--hl{% endif %}{% if n_year == latest_year %} row--new{% endif %}">
+        <time class="row__date">{{ n.date }}{% if n_year == latest_year %}<span class="new">New</span>{% endif %}</time>
         <div class="row__text">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
       </li>
       {% endfor %}
