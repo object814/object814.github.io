@@ -219,7 +219,7 @@
     if (!svg) return;
     var $ = function (id) { return document.getElementById(id); };
     var l1 = $('arm-l1'), l2 = $('arm-l2'), j1 = $('arm-j1'), j2 = $('arm-j2'), grip = $('arm-grip'), cart = $('arm-cart');
-    var L1 = 52, L2 = 44, CART_H = 7, CART_W = 26;
+    var L1 = 60, L2 = 36, CART_H = 7, CART_W = 26;   // L1 > L2 keeps the tip clear of the base
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var W = 0, H = 0, rect = null;
@@ -241,7 +241,7 @@
       var dx = tx - bx, dy = by - ty;            // y up
       dy = Math.max(dy, 6);                       // stay above the rail
       var d = Math.hypot(dx, dy);
-      var maxR = L1 + L2 - 0.5, minR = Math.abs(L1 - L2) + 2;
+      var maxR = L1 + L2 - 0.5, minR = L1 - L2 + 8;
       if (d > maxR) { dx *= maxR / d; dy *= maxR / d; d = maxR; }
       if (d < minR) { dx *= minR / d; dy *= minR / d; d = minR; }
       var c2 = (d * d - L1 * L1 - L2 * L2) / (2 * L1 * L2);
@@ -278,13 +278,13 @@
         var px = pointer.x - rect.left, py = pointer.y - rect.top;
         // carriage: damped spring toward the pointer, clamped to the rail
         var tx = Math.max(CART_W / 2, Math.min(W - CART_W / 2, px));
-        vx = (vx + (tx - x) * 0.012) * 0.86;
-        vx = Math.max(-9, Math.min(9, vx));
+        vx = (vx + (tx - x) * 0.004) * 0.9;
+        vx = Math.max(-4, Math.min(4, vx));
         x += vx;
         // arm: ease joint angles toward the IK solution
         var s = solve(px, py, x, by);
         var d1 = wrap(s.t1 - a1), d2 = wrap(s.t2 - a2);
-        a1 += d1 * 0.22; a2 += d2 * 0.22;
+        a1 += d1 * 0.1; a2 += d2 * 0.1;
         settled = Math.abs(vx) < 0.02 && Math.abs(d1) < 0.002 && Math.abs(d2) < 0.002;
       }
       draw();
