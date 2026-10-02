@@ -159,7 +159,7 @@ a:hover .arrow--down { transform: translateY(2px); }
   grid-template-rows: 1fr auto auto auto;
 }
 .hero__kicker {
-  grid-column: 1 / span 8;
+  grid-column: 1 / span 4;
   grid-row: 1;
   align-self: start;
   display: flex;
@@ -176,6 +176,36 @@ a:hover .arrow--down { transform: translateY(2px); }
   background: var(--accent);
   flex: none;
 }
+/* Abstract manipulation diagram, diagonally opposite the name */
+.hero__art {
+  grid-column: 5 / span 5;
+  grid-row: 1;
+  align-self: start;
+  margin-top: 4px;
+}
+.art { display: block; width: 100%; height: auto; overflow: visible; }
+.art__dot { fill: var(--hair); }
+.art__table { stroke: var(--ink); stroke-width: 1.5; }
+.art__hatch { stroke: var(--ink-3); stroke-width: 1; }
+.art__path {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+  animation: art-march 3s linear infinite;
+}
+.art__key { fill: var(--paper); stroke: var(--ink-3); stroke-width: 1; }
+.art__ghost polyline, .art__ghost line { fill: none; stroke: var(--ink-3); stroke-width: 1; opacity: .55; }
+.art__ghost circle { fill: var(--paper); stroke: var(--ink-3); stroke-width: 1; }
+.art__arm polyline, .art__arm line { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.art__arm circle { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.art__mount { fill: var(--ink); }
+.art__base { fill: var(--paper); stroke: var(--ink); stroke-width: 2.5; }
+.art__obj { fill: var(--accent); }
+.art__obj-start { fill: none; stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 3; }
+.art__label { font-family: var(--sans); font-size: 12px; font-style: italic; fill: var(--ink-3); }
+@keyframes art-march { to { stroke-dashoffset: -16; } }
+
 .hero__name {
   grid-column: 1 / span 9;
   grid-row: 2;
@@ -515,6 +545,7 @@ a:hover .arrow--down { transform: translateY(2px); }
 
   .hero { padding-top: 32px; grid-template-rows: auto; }
   .hero__kicker { grid-column: 1 / -1; font-size: var(--t-xs); }
+  .hero__art { display: none; }
   .hero__name { grid-column: 1 / -1; margin-top: 24px; font-size: clamp(36px, 10.5vw, 56px); }
   .hero__native { grid-column: 1 / span 6; grid-row: 4; align-self: end; }
   .hero__portrait { grid-column: 8 / -1; grid-row: 4; margin-top: 24px; }
@@ -534,7 +565,7 @@ a:hover .arrow--down { transform: translateY(2px); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .row--now .row__date::after { animation: none; }
+  .row--now .row__date::after, .art__path { animation: none; }
   * { transition: none !important; }
 }
 
