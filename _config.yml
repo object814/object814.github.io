@@ -10,7 +10,7 @@ author:
   avatar        : "images/profile_img.jpg"
   position      : "DPhil Student, Robotics"
   affiliation   : "Applied AI Lab, University of Oxford"
-  affiliation_url: "https://ori.ox.ac.uk/labs/a2i"
+  affiliation_url: "https://ori.ox.ac.uk/groups/a2i"
   location      : "Oxford, United Kingdom"
   focus         : "Robot learning · Continual world models"
   email         : "haoyu@robots.ox.ac.uk"
