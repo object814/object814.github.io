@@ -180,6 +180,10 @@
     {{ a.email_display }}<br>
     <a href="{{ a.googlescholar }}">Google Scholar<span class="arrow" aria-hidden="true">↗</span></a> &nbsp; <a href="https://github.com/{{ a.github }}">GitHub<span class="arrow" aria-hidden="true">↗</span></a>
   </div>
+  <div class="footer__col footer__col--updated">
+    <span class="footer__label">Last updated</span>
+    <time datetime="{{ site.time | date: '%Y-%m-%d' }}">{{ site.time | date: "%-d %B %Y" }}</time>
+  </div>
   {% if site.mapmyvisitors_id %}
   <div class="footer__map">
     <span class="footer__label">Visitors</span>

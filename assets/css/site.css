@@ -459,7 +459,8 @@ a:hover .arrow { transform: translate(2px, -2px); }
   margin-bottom: 6px;
 }
 .footer__col { grid-column: 4 / span 3; line-height: 1.6; }
-.footer__map { grid-column: 7 / span 3; max-width: 240px; }
+.footer__col--updated { grid-column: 7 / span 3; font-variant-numeric: tabular-nums; }
+.footer__map { grid-column: 10 / -1; max-width: 240px; }
 .footer__map img, .footer__map canvas { max-width: 100%; height: auto; }
 .footer__note { grid-column: 1 / span 9; color: var(--ink-3); font-size: var(--t-xs); }
 .footer__note a { text-decoration-color: var(--hair); }
@@ -511,7 +512,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
   .entry__index span { margin-top: 0; }
   .entry__figure, .entry__text { grid-column: 1 / -1; }
 
-  .footer__name, .footer__col, .footer__map, .footer__note { grid-column: 1 / -1; }
+  .footer__name, .footer__col, .footer__col--updated, .footer__map, .footer__note { grid-column: 1 / -1; }
   .footer__top { grid-column: 1 / -1; justify-self: start; }
 }
 
