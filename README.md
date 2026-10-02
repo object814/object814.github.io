@@ -1,7 +1,7 @@
 # object814.github.io
 
-Personal academic homepage of Haoyu Zhou in a tech-brutalist style: exposed grid and hard 2px lines,
-monospace type (JetBrains Mono) with Space Grotesk display, log- and table-style lists, one acid-lime accent.
+Personal academic homepage of Haoyu Zhou in a technical-editorial style: a journal-like 12-column page
+with serif reading text (Newsreader), mono metadata (IBM Plex Mono), margin notes, numbered figures and a contents list.
 
 ## Editing content
 
@@ -23,7 +23,7 @@ Text fields accept Markdown links and **bold**. Quote any value that contains a 
 ## Structure
 
 - `_layouts/home.html` — the single-page template
-- `assets/css/brutalist.css` — all styles (light/dark tokens, grid, records, tables)
+- `assets/css/editorial.css` — all styles (page grid, type, light/dark tokens)
 - `images/` — portrait, publication figures, favicons
 
 ## Local preview
