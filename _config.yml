@@ -15,6 +15,11 @@ author:
   focus         : "Robot learning · Continual world models"
   email         : "haoyu@robots.ox.ac.uk"
   email_display : "haoyu at robots.ox.ac.uk"
+  address       :            # postal address, one line per item (footer)
+    - "Oxford Robotics Institute"
+    - "23 Banbury Road"
+    - "Oxford OX2 6NN"
+    - "United Kingdom"
   googlescholar : "https://scholar.google.com/citations?user=WFkhn04AAAAJ&hl=en"
   github        : "object814"
 

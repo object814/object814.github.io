@@ -177,8 +177,8 @@
   <div class="footer__name">{{ a.name }}<span lang="zh">{{ a.name_native }}</span></div>
   <div class="footer__col">
     <span class="footer__label">Contact</span>
-    {{ a.email_display }}<br>
-    <a href="{{ a.googlescholar }}">Google Scholar<span class="arrow" aria-hidden="true">↗</span></a> &nbsp; <a href="https://github.com/{{ a.github }}">GitHub<span class="arrow" aria-hidden="true">↗</span></a>
+    <a href="mailto:{{ a.email }}">{{ a.email_display }}</a>
+    <address class="footer__address">{{ a.address | join: '<br>' }}</address>
   </div>
   <div class="footer__col footer__col--updated">
     <span class="footer__label">Last updated</span>

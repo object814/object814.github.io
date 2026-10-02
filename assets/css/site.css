@@ -459,6 +459,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
   margin-bottom: 6px;
 }
 .footer__col { grid-column: 4 / span 3; line-height: 1.6; }
+.footer__address { margin-top: 10px; font-style: normal; color: var(--ink-2); }
 .footer__col--updated { grid-column: 7 / span 3; font-variant-numeric: tabular-nums; }
 .footer__map { grid-column: 10 / -1; max-width: 240px; }
 .footer__map img, .footer__map canvas { max-width: 100%; height: auto; }
