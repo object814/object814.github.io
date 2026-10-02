@@ -17,7 +17,7 @@
   venues:
     - { label: IROS 2024, kind: accepted }
     - { label: Oral, kind: oral }
-  authors: "[Zhixuan Xu](https://ariszxxu.github.io/)\\*, [Chongkai Gao](https://chongkaigao.com/)\\*, [Zixuan Liu](https://panda-shawn.github.io/)\\*, [Gang Yang](https://openreview.net/profile?id=~Gang_Yang8)\\*, [Chenrui Tie](https://crtie.github.io/), [Haozhuo Zheng](http://zzdirty.cn/), **Haoyu Zhou**, [Weikun Peng](https://www.linkedin.com/in/weikun-peng-7731281b4/?originalSubdomain=sg), [Debang Wang](https://www.linkedin.com/in/debang-wang-5690b5158/?originalSubdomain=sg), [Tianrun Hu](https://h-tr.github.io/), Tianyi Chen, [Zhouliang Yu](https://scholar.google.com/citations?user=qUMjnPcAAAAJ&hl=en), [Lin Shao](https://linsats.github.io/)"
+  authors: "[Zhixuan Xu](https://ariszxxu.github.io/)\\*, [Chongkai Gao](https://chongkaigao.com/)\\*, [Zixuan Liu](https://panda-shawn.github.io/)\\*, [Gang Yang](https://openreview.net/profile?id=~Gang_Yang8)\\*, [Chenrui Tie](https://crtie.github.io/), Haozhuo Zheng, **Haoyu Zhou**, [Weikun Peng](https://willipwk.github.io/), [Debang Wang](https://www.linkedin.com/in/debang-wang-5690b5158/?originalSubdomain=sg), [Tianrun Hu](https://h-tr.github.io/), Tianyi Chen, [Zhouliang Yu](https://zhouliang-yu.github.io/), [Lin Shao](https://linsats.github.io/)"
   links:
     - { label: Website, url: "https://manifoundationmodel.github.io/" }
     - { label: Google Scholar, url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:9yKSN-GCB0IC" }
@@ -27,7 +27,7 @@
   image: images/GenMani.png
   venues:
     - { label: arXiv Preprint, kind: pending }
-  authors: "**Haoyu Zhou**, [Mingyu Ding](https://dingmyu.github.io/), [Weikun Peng](https://www.linkedin.com/in/weikun-peng-7731281b4/?originalSubdomain=sg), [Masayoshi Tomizuka](https://me.berkeley.edu/people/masayoshi-tomizuka/), [Lin Shao](https://linsats.github.io/), [Chuang Gan](https://people.csail.mit.edu/ganchuang/)"
+  authors: "**Haoyu Zhou**, [Mingyu Ding](https://dingmyu.github.io/), [Weikun Peng](https://willipwk.github.io/), [Masayoshi Tomizuka](https://me.berkeley.edu/people/masayoshi-tomizuka/), [Lin Shao](https://linsats.github.io/), [Chuang Gan](https://people.csail.mit.edu/ganchuang/)"
   links:
     - { label: Website, url: "https://object814.github.io/Task-Condition-With-LLM/" }
     - { label: Google Scholar, url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:u5HHmVD_uO8C" }

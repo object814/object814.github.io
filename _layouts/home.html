@@ -163,7 +163,7 @@
     <h2 class="label"><span class="num">06</span>Education</h2>
     <ol class="body rows">
       {% for e in site.data.education %}
-      <li class="row row--3{% if forloop.first %} row--hl{% endif %}">
+      <li class="row row--3{% if forloop.first %} row--hl row--now{% endif %}">
         <time class="row__date">{{ e.period }}</time>
         <div class="row__text row__text--title">{{ e.degree }}</div>
         <div class="row__aside">{{ e.school }}</div>

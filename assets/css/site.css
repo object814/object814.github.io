@@ -306,6 +306,20 @@ a:hover .arrow--down { transform: translateY(2px); }
 }
 .row--hl .row__date { color: var(--accent); }
 
+/* Ongoing: a small blinking dot after the date */
+.row--now .row__date::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 1px;
+  animation: blink 1.6s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
 /* Latest news: a faint tinted band that bleeds slightly past the text edges */
 .row--new { position: relative; isolation: isolate; border-bottom-color: transparent; }
 .row--new::before {
@@ -520,6 +534,7 @@ a:hover .arrow--down { transform: translateY(2px); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .row--now .row__date::after { animation: none; }
   * { transition: none !important; }
 }
 
