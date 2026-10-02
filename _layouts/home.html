@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.author.name }} — {{ site.author.position }}, University of Oxford</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta property="og:title" content="{{ site.author.name }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:image" content="{{ site.author.avatar | absolute_url }}">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0b0b" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/images/favicon-16x16.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/images/site.webmanifest' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/swiss.css' | relative_url }}">
+</head>
+<body>
+
+{% assign a = site.author %}
+
+<header class="bar">
+  <div class="grid bar__inner">
+    <a class="bar__name" href="#top">{{ a.name }}</a>
+    <nav class="bar__nav" aria-label="Sections">
+      {% for item in site.data.navigation.main %}
+      <a href="#{{ item.id }}"><span class="num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Masthead -->
+  <section class="hero grid">
+    <div class="hero__kicker">
+      <span class="square" aria-hidden="true"></span>{{ a.focus }}
+    </div>
+    <h1 class="hero__name">
+      {% assign parts = a.name | split: ' ' %}{% for p in parts %}<span>{{ p }}</span>{% endfor %}
+    </h1>
+    <figure class="hero__portrait">
+      <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="750">
+    </figure>
+    <span class="hero__native" lang="zh">{{ a.name_native }}</span>
+
+    <dl class="facts">
+      <div>
+        <dt>Position</dt>
+        <dd>{{ a.position }}</dd>
+      </div>
+      <div>
+        <dt>Affiliation</dt>
+        <dd><a href="{{ a.affiliation_url }}">{{ a.affiliation }}</a></dd>
+      </div>
+      <div>
+        <dt>Location</dt>
+        <dd>{{ a.location }}</dd>
+      </div>
+      <div>
+        <dt>Contact</dt>
+        <dd class="links">
+          <a href="mailto:{{ a.email }}">Email</a>
+          <a href="{{ a.googlescholar }}">Google Scholar</a>
+          <a href="https://github.com/{{ a.github }}">GitHub</a>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- 01 About -->
+  <section class="section grid" id="about">
+    <h2 class="label"><span class="num">01</span>About</h2>
+    <div class="body prose">
+      {{ content }}
+    </div>
+  </section>
+
+  <!-- 02 News -->
+  <section class="section grid" id="news">
+    <h2 class="label"><span class="num">02</span>News</h2>
+    <ol class="body rows">
+      {% for n in site.data.news %}
+      <li class="row{% if n.highlight %} row--hl{% endif %}">
+        <time class="row__date">{{ n.date }}</time>
+        <div class="row__text">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <!-- 03 Publications -->
+  <section class="section grid" id="publications">
+    <h2 class="label"><span class="num">03</span>Publications</h2>
+    <div class="body">
+      {% for p in site.data.publications %}
+      <article class="entry">
+        <div class="entry__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        <figure class="entry__figure">
+          <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
+        </figure>
+        <div class="entry__text">
+          <ul class="tags">
+            {% for v in p.venues %}<li class="tag tag--{{ v.kind }}">{{ v.label }}</li>{% endfor %}
+          </ul>
+          <h3 class="entry__title">{{ p.title }}</h3>
+          <p class="entry__meta">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="entry__links">
+            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}<span aria-hidden="true">↗</span></a>{% endfor %}
+          </p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- 04 Projects -->
+  <section class="section grid" id="projects">
+    <h2 class="label"><span class="num">04</span>Projects</h2>
+    <div class="body">
+      {% for p in site.data.projects %}
+      <article class="entry">
+        <div class="entry__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        <figure class="entry__figure">
+          <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
+        </figure>
+        <div class="entry__text">
+          <ul class="tags"><li class="tag tag--plain">{{ p.period }}</li></ul>
+          <h3 class="entry__title">{{ p.title }}</h3>
+          <p class="entry__meta">{{ p.context | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="entry__meta entry__meta--quiet">{{ p.people | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="entry__links">
+            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}<span aria-hidden="true">↗</span></a>{% endfor %}
+          </p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- 05 Honours -->
+  <section class="section grid" id="honours">
+    <h2 class="label"><span class="num">05</span>Honours &amp; Awards</h2>
+    <ol class="body rows">
+      {% for h in site.data.honors %}
+      <li class="row row--3">
+        <time class="row__date">{{ h.date }}</time>
+        <div class="row__text row__text--strong">{{ h.title | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+        <div class="row__aside">{{ h.org }}</div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <!-- 06 Education -->
+  <section class="section grid" id="education">
+    <h2 class="label"><span class="num">06</span>Education</h2>
+    <ol class="body rows">
+      {% for e in site.data.education %}
+      <li class="row row--3">
+        <time class="row__date">{{ e.period }}</time>
+        <div class="row__text row__text--strong">{{ e.degree }}</div>
+        <div class="row__aside">{{ e.school }}</div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+</main>
+
+<footer class="footer grid">
+  <div class="footer__name">{{ a.name }}<br><span lang="zh">{{ a.name_native }}</span></div>
+  <div class="footer__contact">
+    <span class="footer__label">Contact</span>
+    {{ a.email_display }}<br>
+    <a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a>
+  </div>
+  {% if site.mapmyvisitors_id %}
+  <div class="footer__map">
+    <span class="footer__label">Visitors</span>
+    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ site.mapmyvisitors_id }}&cl=ffffff&w=a"></script>
+  </div>
+  {% endif %}
+  <p class="footer__note">Set in Inter &amp; Inter Tight. Built with Jekyll; earlier versions were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
+  <a class="footer__top" href="#top">Back to top ↑</a>
+</footer>
+
+<script>
+  // Open external links in a new tab; keep in-page anchors in place.
+  document.querySelectorAll('a[href^="http"], a[href^="//"]').forEach(function (el) {
+    if (el.hostname !== location.hostname) { el.target = '_blank'; el.rel = 'noopener'; }
+  });
+</script>
+</body>
+</html>

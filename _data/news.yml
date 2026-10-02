@@ -1,0 +1,14 @@
+# Newest first. `text` is Markdown.
+- date: "2026.09"
+  highlight: true
+  text: "Our paper “Benchmarking World Models for Continual Learning on Compositional Tasks” was accepted to the [NeurIPS 2026 Continual World Models Workshop](https://continual-world-models-workshop.github.io/). See you in Sydney!"
+- date: "2026.09"
+  text: "“Benchmarking World Models for Continual Learning on Compositional Tasks” is now on arXiv and under review for ICRA 2027."
+- date: "2024.06"
+  highlight: true
+  text: "“ManiFoundation Model for General-Purpose Robotic Manipulation of Contact Synthesis with Arbitrary Objects and Robots” was accepted to IROS 2024 as an **oral presentation**."
+- date: "2024.03"
+  text: "“Generalizable Long-Horizon Manipulations with Large Language Models” is on arXiv."
+- date: "2023.07"
+  highlight: true
+  text: "“ClothesNet: An Information-Rich 3D Garment Model Repository with Simulated Clothes Environment” was accepted to ICCV 2023."

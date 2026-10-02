@@ -1,25 +1,8 @@
-# main links links
+# Sections, in page order. `id` must match a section rendered in _layouts/home.html.
 main:
-  - title: "About Me"
-    url: "/#about-me"
-
-  - title: "News"
-    url: "/#-news"
-
-  - title: "Publications"
-    url: "/#-publications"
-
-  - title: "Projects"
-    url: "/#-projects"
-
-  - title: "Honors and Awards"
-    url: "/#-honors-and-awards"
-
-  - title: "Educations"
-    url: "/#-educations"
-
-  # - title: "Invited Talks"
-  #   url: "/#-invited-talks"
-
-  # - title: "Internships"
-  #   url: "/#-internships"
+  - { title: About, id: about }
+  - { title: News, id: news }
+  - { title: Publications, id: publications }
+  - { title: Projects, id: projects }
+  - { title: Honours, id: honours }
+  - { title: Education, id: education }

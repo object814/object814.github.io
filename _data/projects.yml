@@ -1,0 +1,16 @@
+# Newest first. `context` and `people` are Markdown.
+- title: Prompt-Learning in Vision-Language-Action Models for Robot Manipulation — A Step Towards Continual Learning
+  period: 2024.09 – 2024.12
+  image: images/ME5400B.png
+  context: NUS ME5400B course project
+  people: "Supervisor: [Lin Shao](https://linsats.github.io/). Advisors: [Chongkai Gao](https://chongkaigao.com/), [Zixuan Liu](https://panda-shawn.github.io/)"
+  links:
+    - { label: Report, url: "https://drive.google.com/file/d/10B5aHKWvnoIdX6kv1YqkAp62ejDWGtf9/view?usp=sharing" }
+
+- title: Vision-based Exoskeleton Pose Estimation with Simple RGB Cameras
+  period: 2024.03 – 2024.06
+  image: images/ME5400A.gif
+  context: "NUS ME5400A course project, [Biorobotics Lab](https://cde.nus.edu.sg/bme/bioroboticslab/)"
+  people: "Supervisor: [Haoyong Yu](https://cde.nus.edu.sg/bme/bioroboticslab/author/haoyong-yu/). Advisors: [Ashwin Narayan](https://cde.nus.edu.sg/bme/bioroboticslab/author/ashwin-narayan/), [Cindy Sia Ching Li](https://cde.nus.edu.sg/bme/bioroboticslab/author/cindy-sia-ching-li/), [Seyram Ofori](https://cde.nus.edu.sg/bme/bioroboticslab/author/seyram-ofori/), [Shounak Bhattacharya](https://cde.nus.edu.sg/bme/bioroboticslab/author/shounak-bhattacharya/)"
+  links:
+    - { label: Report, url: "https://drive.google.com/file/d/1gNs3HpIpQ59PC-283UBBNn4cAPPd2INB/view?usp=sharing" }

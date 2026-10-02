@@ -1,0 +1,43 @@
+# Newest first. `authors` is Markdown; bold your own name.
+# venue kinds: accepted | pending | oral
+- title: Benchmarking World Models for Continual Learning on Compositional Tasks
+  year: 2026
+  image: images/CompositionalCL.png
+  venues:
+    - { label: NeurIPS 2026 Workshop, kind: accepted }
+    - { label: ICRA 2027 · Under Review, kind: pending }
+  authors: "**Haoyu Zhou**, [Joe Watson](https://joemwatson.github.io/), [Anson Lei](https://scholar.google.com/citations?user=ZR7KUuYAAAAJ&hl=en), [Ingmar Posner](https://ori.ox.ac.uk/people/ingmar-posner)"
+  links:
+    - { label: Website, url: "https://object814.github.io/Compositional-Continual-Learning/" }
+    - { label: Google Scholar, url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:qjMakFHDy7sC" }
+
+- title: ManiFoundation Model for General-Purpose Robotic Manipulation of Contact Synthesis with Arbitrary Objects and Robots
+  year: 2024
+  image: images/ManiFoundation.gif
+  venues:
+    - { label: IROS 2024, kind: accepted }
+    - { label: Oral, kind: oral }
+  authors: "[Zhixuan Xu](https://ariszxxu.github.io/)\\*, [Chongkai Gao](https://chongkaigao.com/)\\*, [Zixuan Liu](https://panda-shawn.github.io/)\\*, [Gang Yang](https://openreview.net/profile?id=~Gang_Yang8)\\*, [Chenrui Tie](https://crtie.github.io/), [Haozhuo Zheng](http://zzdirty.cn/), **Haoyu Zhou**, [Weikun Peng](https://www.linkedin.com/in/weikun-peng-7731281b4/?originalSubdomain=sg), [Debang Wang](https://www.linkedin.com/in/debang-wang-5690b5158/?originalSubdomain=sg), [Tianrun Hu](https://h-tr.github.io/), Tianyi Chen, [Zhouliang Yu](https://scholar.google.com/citations?user=qUMjnPcAAAAJ&hl=en), [Lin Shao](https://linsats.github.io/)"
+  links:
+    - { label: Website, url: "https://manifoundationmodel.github.io/" }
+    - { label: Google Scholar, url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:9yKSN-GCB0IC" }
+
+- title: Generalizable Long-Horizon Manipulations with Large Language Models
+  year: 2024
+  image: images/GenMani.png
+  venues:
+    - { label: arXiv Preprint, kind: pending }
+  authors: "**Haoyu Zhou**, [Mingyu Ding](https://dingmyu.github.io/), [Weikun Peng](https://www.linkedin.com/in/weikun-peng-7731281b4/?originalSubdomain=sg), [Masayoshi Tomizuka](https://me.berkeley.edu/people/masayoshi-tomizuka/), [Lin Shao](https://linsats.github.io/), [Chuang Gan](https://people.csail.mit.edu/ganchuang/)"
+  links:
+    - { label: Website, url: "https://object814.github.io/Task-Condition-With-LLM/" }
+    - { label: Google Scholar, url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:u5HHmVD_uO8C" }
+
+- title: "ClothesNet: An Information-Rich 3D Garment Model Repository with Simulated Clothes Environment"
+  year: 2023
+  image: images/ClothesNet.png
+  venues:
+    - { label: ICCV 2023, kind: accepted }
+  authors: "[Bingyang Zhou](https://github.com/BingyangZHOU), **Haoyu Zhou**, [Tianhai Liang](https://tinhal.github.io/), [Qiaojun Yu](https://scholar.google.com/citations?user=hOxT8QUAAAAJ&hl=zh-CN), [Siheng Zhao](https://sihengz02.github.io/), [Yuwei Zeng](https://friolero.github.io/), [Jun Lv](https://lyuj1998.github.io/), [Siyuan Luo](https://www.siyuanluo.com/), [Qiancai Wang](https://dblp.org/pid/355/1112.html), Xinyuan Yu, Haonan Chen, [Cewu Lu](https://www.mvig.org/), [Lin Shao](https://linsats.github.io/)"
+  links:
+    - { label: Website, url: "https://sites.google.com/view/clothesnet/" }
+    - { label: Google Scholar, url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WFkhn04AAAAJ&citation_for_view=WFkhn04AAAAJ:u-x6o8ySG0sC" }
