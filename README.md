@@ -1,7 +1,8 @@
 # object814.github.io
 
-Personal academic homepage of Haoyu Zhou in a technical-editorial style: a journal-like 12-column page
-with serif reading text (Newsreader), mono metadata (IBM Plex Mono), margin notes, numbered figures and a contents list.
+Personal academic homepage of Haoyu Zhou. The layout follows the International Typographic (Swiss) Style:
+a 12-column grid, flush-left text, section labels in a left column. The voice is technical-editorial: warm paper,
+Newsreader serif for display and reading text, IBM Plex Mono for metadata, a vermilion accent and numbered figures.
 
 ## Editing content
 
@@ -23,7 +24,7 @@ Text fields accept Markdown links and **bold**. Quote any value that contains a 
 ## Structure
 
 - `_layouts/home.html` — the single-page template
-- `assets/css/editorial.css` — all styles (page grid, type, light/dark tokens)
+- `assets/css/site.css` — all styles (grid, type, light/dark colour tokens)
 - `images/` — portrait, publication figures, favicons
 
 ## Local preview

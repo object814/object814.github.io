@@ -17,157 +17,160 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="{{ '/assets/css/editorial.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
 <body>
 
 {% assign a = site.author %}
-{% assign nav = site.data.navigation.main %}
 
-<header class="mast">
-  <div class="page mast__row">
-    <a class="mast__title" href="#top">{{ a.name }}<span>Research Notes</span></a>
-    <nav class="mast__nav" aria-label="Sections">
-      {% for item in nav %}<a href="#{{ item.id }}"><span>§{{ forloop.index }}</span>{{ item.title }}</a>{% endfor %}
+<header class="bar">
+  <div class="grid bar__inner">
+    <a class="bar__name" href="#top">{{ a.name }}</a>
+    <nav class="bar__nav" aria-label="Sections">
+      {% for item in site.data.navigation.main %}
+      <a href="#{{ item.id }}"><span class="num">§{{ forloop.index }}</span>{{ item.title }}</a>
+      {% endfor %}
     </nav>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- Front matter -->
-  <section class="page front">
-    <div class="front__meta">
+  <!-- Masthead -->
+  <section class="hero grid">
+    <div class="hero__meta">
       <span>Edition {{ site.time | date: "%Y" }}</span>
       <span>{{ a.location }}</span>
       <span>{{ a.focus }}</span>
     </div>
-
-    <h1 class="front__title">{{ a.name }} <span class="front__native" lang="zh">{{ a.name_native }}</span></h1>
-    <p class="front__deck">
-      DPhil student at the <a href="{{ a.affiliation_url }}">{{ a.affiliation }}</a>, building
-      <em>world models for robots that keep learning</em>&nbsp;— continually, modularly and compositionally.
-    </p>
-
-    <dl class="byline">
-      <div><dt>Position</dt><dd>{{ a.position }}</dd></div>
-      <div><dt>Affiliation</dt><dd>{{ a.affiliation }}</dd></div>
-      <div><dt>Correspondence</dt><dd>{{ a.email_display }}</dd></div>
-      <div><dt>Elsewhere</dt><dd><a href="mailto:{{ a.email }}">Email</a> · <a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a></dd></div>
-    </dl>
-
-    <figure class="front__fig">
+    <h1 class="hero__name">
+      {% assign parts = a.name | split: ' ' %}{% for p in parts %}<span>{{ p }}</span>{% endfor %}
+    </h1>
+    <span class="hero__native" lang="zh">{{ a.name_native }}</span>
+    <figure class="hero__portrait">
       <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="750">
       <figcaption><b>Fig. 0</b> The author.</figcaption>
     </figure>
 
-    <nav class="toc" aria-label="Contents">
-      <h2 class="toc__head">Contents</h2>
-      <ol>
-        {% for item in nav %}
-        <li><a href="#{{ item.id }}"><span class="toc__num">§{{ forloop.index }}</span><span class="toc__title">{{ item.title }}</span><span class="toc__lead" aria-hidden="true"></span><span class="toc__count">{% case item.id %}{% when 'news' %}{{ site.data.news | size }} items{% when 'publications' %}{{ site.data.publications | size }} papers{% when 'projects' %}{{ site.data.projects | size }} projects{% when 'honours' %}{{ site.data.honors | size }} entries{% when 'education' %}{{ site.data.education | size }} degrees{% else %}Introduction{% endcase %}</span></a></li>
-        {% endfor %}
-      </ol>
-    </nav>
+    <dl class="facts">
+      <div>
+        <dt>Position</dt>
+        <dd>{{ a.position }}</dd>
+      </div>
+      <div>
+        <dt>Affiliation</dt>
+        <dd><a href="{{ a.affiliation_url }}">{{ a.affiliation }}</a></dd>
+      </div>
+      <div>
+        <dt>Location</dt>
+        <dd>{{ a.location }}</dd>
+      </div>
+      <div>
+        <dt>Contact</dt>
+        <dd class="links">
+          <a href="mailto:{{ a.email }}">Email</a>
+          <a href="{{ a.googlescholar }}">Google Scholar</a>
+          <a href="https://github.com/{{ a.github }}">GitHub</a>
+        </dd>
+      </div>
+    </dl>
   </section>
 
   <!-- §1 About -->
-  <section class="page sec" id="about">
-    <header class="sec__head"><span class="sec__num">§1</span><h2>About</h2></header>
-    <div class="sec__main prose">
+  <section class="section grid" id="about">
+    <h2 class="label"><span class="num">§1</span>About</h2>
+    <div class="body prose">
       {{ content }}
     </div>
-    <aside class="sec__margin note">
-      <span class="note__mark">Note</span>
-      Currently in the first year of a DPhil at Oxford. Previously at the National University of Singapore and Beihang University; see <a href="#education">§6</a>.
-    </aside>
   </section>
 
   <!-- §2 News -->
-  <section class="page sec" id="news">
-    <header class="sec__head"><span class="sec__num">§2</span><h2>News</h2></header>
-    <ol class="sec__wide dispatch">
+  <section class="section grid" id="news">
+    <h2 class="label"><span class="num">§2</span>News</h2>
+    <ol class="body rows">
       {% for n in site.data.news %}
-      <li class="dispatch__item{% if n.highlight %} dispatch__item--hl{% endif %}">
-        <time class="dispatch__date">{{ n.date }}</time>
-        <p class="dispatch__text">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      <li class="row{% if n.highlight %} row--hl{% endif %}">
+        <time class="row__date">{{ n.date }}</time>
+        <div class="row__text">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
       </li>
       {% endfor %}
     </ol>
   </section>
 
   <!-- §3 Publications -->
-  <section class="page sec" id="publications">
-    <header class="sec__head"><span class="sec__num">§3</span><h2>Publications</h2></header>
-    <div class="sec__wide">
+  <section class="section grid" id="publications">
+    <h2 class="label"><span class="num">§3</span>Publications</h2>
+    <div class="body">
       {% for p in site.data.publications %}
-      <article class="paper">
-        <div class="paper__text">
-          <p class="paper__venue">
-            {% for v in p.venues %}<span class="venue venue--{{ v.kind }}">{{ v.label }}</span>{% unless forloop.last %}<span class="sep">·</span>{% endunless %}{% endfor %}
+      <article class="entry">
+        <div class="entry__index"><span>3.{{ forloop.index }}</span>{{ p.year }}</div>
+        <figure class="entry__figure">
+          <div class="entry__plate"><img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy"></div>
+          <figcaption><b>Fig. 3.{{ forloop.index }}</b></figcaption>
+        </figure>
+        <div class="entry__text">
+          <p class="tags">
+            {% for v in p.venues %}<span class="tag tag--{{ v.kind }}">{{ v.label }}</span>{% endfor %}
           </p>
-          <h3 class="paper__title">{{ p.title }}</h3>
-          <p class="paper__authors">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="paper__links">
-            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+          <h3 class="entry__title">{{ p.title }}</h3>
+          <p class="entry__meta">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="entry__links">
+            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}<span aria-hidden="true">↗</span></a>{% endfor %}
           </p>
         </div>
-        <figure class="paper__fig">
-          <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
-          <figcaption><b>Fig. 3.{{ forloop.index }}</b> {{ p.title | split: ':' | first }}, {{ p.year }}.</figcaption>
-        </figure>
       </article>
       {% endfor %}
     </div>
   </section>
 
   <!-- §4 Projects -->
-  <section class="page sec" id="projects">
-    <header class="sec__head"><span class="sec__num">§4</span><h2>Projects</h2></header>
-    <div class="sec__wide">
+  <section class="section grid" id="projects">
+    <h2 class="label"><span class="num">§4</span>Projects</h2>
+    <div class="body">
       {% for p in site.data.projects %}
-      <article class="paper">
-        <div class="paper__text">
-          <p class="paper__venue"><span class="venue venue--plain">{{ p.period }}</span></p>
-          <h3 class="paper__title">{{ p.title }}</h3>
-          <p class="paper__authors">{{ p.context | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="paper__authors paper__authors--quiet">{{ p.people | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-          <p class="paper__links">
-            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+      <article class="entry">
+        <div class="entry__index"><span>4.{{ forloop.index }}</span>{{ p.period | slice: 0, 4 }}</div>
+        <figure class="entry__figure">
+          <div class="entry__plate"><img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy"></div>
+          <figcaption><b>Fig. 4.{{ forloop.index }}</b></figcaption>
+        </figure>
+        <div class="entry__text">
+          <p class="tags"><span class="tag tag--plain">{{ p.period }}</span></p>
+          <h3 class="entry__title">{{ p.title }}</h3>
+          <p class="entry__meta">{{ p.context | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="entry__meta entry__meta--quiet">{{ p.people | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          <p class="entry__links">
+            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}<span aria-hidden="true">↗</span></a>{% endfor %}
           </p>
         </div>
-        <figure class="paper__fig">
-          <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
-          <figcaption><b>Fig. 4.{{ forloop.index }}</b> {{ p.context | strip_html | split: ',' | first }}.</figcaption>
-        </figure>
       </article>
       {% endfor %}
     </div>
   </section>
 
   <!-- §5 Honours -->
-  <section class="page sec" id="honours">
-    <header class="sec__head"><span class="sec__num">§5</span><h2>Honours &amp; Awards</h2></header>
-    <ol class="sec__wide ledger">
+  <section class="section grid" id="honours">
+    <h2 class="label"><span class="num">§5</span>Honours &amp; Awards</h2>
+    <ol class="body rows">
       {% for h in site.data.honors %}
-      <li class="ledger__row">
-        <span class="ledger__main">{{ h.title | markdownify | remove: '<p>' | remove: '</p>' }}<em>{{ h.org }}</em></span>
-        <span class="ledger__lead" aria-hidden="true"></span>
-        <time class="ledger__date">{{ h.date }}</time>
+      <li class="row row--3">
+        <time class="row__date">{{ h.date }}</time>
+        <div class="row__text row__text--title">{{ h.title | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+        <div class="row__aside">{{ h.org }}</div>
       </li>
       {% endfor %}
     </ol>
   </section>
 
   <!-- §6 Education -->
-  <section class="page sec" id="education">
-    <header class="sec__head"><span class="sec__num">§6</span><h2>Education</h2></header>
-    <ol class="sec__wide ledger">
+  <section class="section grid" id="education">
+    <h2 class="label"><span class="num">§6</span>Education</h2>
+    <ol class="body rows">
       {% for e in site.data.education %}
-      <li class="ledger__row">
-        <span class="ledger__main">{{ e.degree }}<em>{{ e.school }}</em></span>
-        <span class="ledger__lead" aria-hidden="true"></span>
-        <time class="ledger__date">{{ e.period }}</time>
+      <li class="row row--3{% if forloop.first %} row--hl{% endif %}">
+        <time class="row__date">{{ e.period }}</time>
+        <div class="row__text row__text--title">{{ e.degree }}</div>
+        <div class="row__aside">{{ e.school }}</div>
       </li>
       {% endfor %}
     </ol>
@@ -175,22 +178,21 @@
 
 </main>
 
-<footer class="page colophon">
-  <div class="colophon__col">
-    <h2>Colophon</h2>
-    <p>Set in Newsreader, IBM Plex Sans and IBM Plex Mono. Built with Jekyll and hosted on GitHub Pages. Earlier versions of this site were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
-  </div>
-  <div class="colophon__col">
-    <h2>Correspondence</h2>
-    <p>{{ a.email_display }}<br><a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a></p>
+<footer class="footer grid">
+  <div class="footer__name">{{ a.name }}<span lang="zh">{{ a.name_native }}</span></div>
+  <div class="footer__col">
+    <span class="footer__label">Correspondence</span>
+    {{ a.email_display }}<br>
+    <a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a>
   </div>
   {% if site.mapmyvisitors_id %}
-  <div class="colophon__col colophon__map">
-    <h2>Readership</h2>
+  <div class="footer__map">
+    <span class="footer__label">Readership</span>
     <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ site.mapmyvisitors_id }}&cl=ffffff&w=a"></script>
   </div>
   {% endif %}
-  <p class="colophon__end"><span aria-hidden="true">■</span> <a href="#top">Return to top</a></p>
+  <p class="footer__note"><span class="footer__label">Colophon</span>Set in Newsreader, IBM Plex Sans and IBM Plex Mono. Built with Jekyll; earlier versions were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
+  <a class="footer__top" href="#top"><span aria-hidden="true">■</span> Back to top</a>
 </footer>
 
 <script>
