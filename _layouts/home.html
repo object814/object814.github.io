@@ -16,7 +16,7 @@
   <link rel="manifest" href="{{ '/images/site.webmanifest' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
 <body>
@@ -28,7 +28,7 @@
     <a class="bar__name" href="#top">{{ a.name }}</a>
     <nav class="bar__nav" aria-label="Sections">
       {% for item in site.data.navigation.main %}
-      <a href="#{{ item.id }}"><span class="num">§{{ forloop.index }}</span>{{ item.title }}</a>
+      <a href="#{{ item.id }}"><span class="num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{{ item.title }}</a>
       {% endfor %}
     </nav>
   </div>
@@ -38,18 +38,13 @@
 
   <!-- Masthead -->
   <section class="hero grid">
-    <div class="hero__meta">
-      <span>Edition {{ site.time | date: "%Y" }}</span>
-      <span>{{ a.location }}</span>
-      <span>{{ a.focus }}</span>
+    <div class="hero__kicker">
+      <span class="square" aria-hidden="true"></span>{{ a.focus }}
     </div>
-    <h1 class="hero__name">
-      {% assign parts = a.name | split: ' ' %}{% for p in parts %}<span>{{ p }}</span>{% endfor %}
-    </h1>
+    <h1 class="hero__name">{{ a.name }}</h1>
     <span class="hero__native" lang="zh">{{ a.name_native }}</span>
     <figure class="hero__portrait">
       <img src="{{ a.avatar | relative_url }}" alt="Portrait of {{ a.name }}" width="600" height="750">
-      <figcaption><b>Fig. 0</b> The author.</figcaption>
     </figure>
 
     <dl class="facts">
@@ -68,25 +63,25 @@
       <div>
         <dt>Contact</dt>
         <dd class="links">
-          <a href="mailto:{{ a.email }}">Email</a>
-          <a href="{{ a.googlescholar }}">Google Scholar</a>
-          <a href="https://github.com/{{ a.github }}">GitHub</a>
+          <a href="mailto:{{ a.email }}">Email<span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="{{ a.googlescholar }}">Google Scholar<span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://github.com/{{ a.github }}">GitHub<span class="arrow" aria-hidden="true">↗</span></a>
         </dd>
       </div>
     </dl>
   </section>
 
-  <!-- §1 About -->
+  <!-- 1 About -->
   <section class="section grid" id="about">
-    <h2 class="label"><span class="num">§1</span>About</h2>
+    <h2 class="label"><span class="num">01</span>About</h2>
     <div class="body prose">
       {{ content }}
     </div>
   </section>
 
-  <!-- §2 News -->
+  <!-- 2 News -->
   <section class="section grid" id="news">
-    <h2 class="label"><span class="num">§2</span>News</h2>
+    <h2 class="label"><span class="num">02</span>News</h2>
     <ol class="body rows">
       {% for n in site.data.news %}
       <li class="row{% if n.highlight %} row--hl{% endif %}">
@@ -97,16 +92,15 @@
     </ol>
   </section>
 
-  <!-- §3 Publications -->
+  <!-- 3 Publications -->
   <section class="section grid" id="publications">
-    <h2 class="label"><span class="num">§3</span>Publications</h2>
+    <h2 class="label"><span class="num">03</span>Publications</h2>
     <div class="body">
       {% for p in site.data.publications %}
       <article class="entry">
-        <div class="entry__index"><span>3.{{ forloop.index }}</span>{{ p.year }}</div>
+        <div class="entry__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}<span>{{ p.year }}</span></div>
         <figure class="entry__figure">
-          <div class="entry__plate"><img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy"></div>
-          <figcaption><b>Fig. 3.{{ forloop.index }}</b></figcaption>
+          <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
         </figure>
         <div class="entry__text">
           <p class="tags">
@@ -123,16 +117,15 @@
     </div>
   </section>
 
-  <!-- §4 Projects -->
+  <!-- 4 Projects -->
   <section class="section grid" id="projects">
-    <h2 class="label"><span class="num">§4</span>Projects</h2>
+    <h2 class="label"><span class="num">04</span>Projects</h2>
     <div class="body">
       {% for p in site.data.projects %}
       <article class="entry">
-        <div class="entry__index"><span>4.{{ forloop.index }}</span>{{ p.period | slice: 0, 4 }}</div>
+        <div class="entry__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}<span>{{ p.period | slice: 0, 4 }}</span></div>
         <figure class="entry__figure">
-          <div class="entry__plate"><img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy"></div>
-          <figcaption><b>Fig. 4.{{ forloop.index }}</b></figcaption>
+          <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy">
         </figure>
         <div class="entry__text">
           <p class="tags"><span class="tag tag--plain">{{ p.period }}</span></p>
@@ -148,9 +141,9 @@
     </div>
   </section>
 
-  <!-- §5 Honours -->
+  <!-- 5 Honours -->
   <section class="section grid" id="honours">
-    <h2 class="label"><span class="num">§5</span>Honours &amp; Awards</h2>
+    <h2 class="label"><span class="num">05</span>Honours &amp; Awards</h2>
     <ol class="body rows">
       {% for h in site.data.honors %}
       <li class="row row--3">
@@ -162,9 +155,9 @@
     </ol>
   </section>
 
-  <!-- §6 Education -->
+  <!-- 6 Education -->
   <section class="section grid" id="education">
-    <h2 class="label"><span class="num">§6</span>Education</h2>
+    <h2 class="label"><span class="num">06</span>Education</h2>
     <ol class="body rows">
       {% for e in site.data.education %}
       <li class="row row--3{% if forloop.first %} row--hl{% endif %}">
@@ -181,18 +174,18 @@
 <footer class="footer grid">
   <div class="footer__name">{{ a.name }}<span lang="zh">{{ a.name_native }}</span></div>
   <div class="footer__col">
-    <span class="footer__label">Correspondence</span>
+    <span class="footer__label">Contact</span>
     {{ a.email_display }}<br>
-    <a href="{{ a.googlescholar }}">Google Scholar</a> · <a href="https://github.com/{{ a.github }}">GitHub</a>
+    <a href="{{ a.googlescholar }}">Google Scholar<span class="arrow" aria-hidden="true">↗</span></a> &nbsp; <a href="https://github.com/{{ a.github }}">GitHub<span class="arrow" aria-hidden="true">↗</span></a>
   </div>
   {% if site.mapmyvisitors_id %}
   <div class="footer__map">
-    <span class="footer__label">Readership</span>
+    <span class="footer__label">Visitors</span>
     <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ site.mapmyvisitors_id }}&cl=ffffff&w=a"></script>
   </div>
   {% endif %}
-  <p class="footer__note"><span class="footer__label">Colophon</span>Set in Newsreader, IBM Plex Sans and IBM Plex Mono. Built with Jekyll; earlier versions were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
-  <a class="footer__top" href="#top"><span aria-hidden="true">■</span> Back to top</a>
+  <p class="footer__note">Set in Inter and Inter Tight. Built with Jekyll; earlier versions were based on Yi Ren’s <a href="https://github.com/RayeRen/acad-homepage.github.io">AcadHomepage</a>.</p>
+  <a class="footer__top" href="#top">Back to top ↑</a>
 </footer>
 
 <script>

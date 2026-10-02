@@ -1,8 +1,8 @@
 # object814.github.io
 
-Personal academic homepage of Haoyu Zhou. The layout follows the International Typographic (Swiss) Style:
-a 12-column grid, flush-left text, section labels in a left column. The voice is technical-editorial: warm paper,
-Newsreader serif for display and reading text, IBM Plex Mono for metadata, a vermilion accent and numbered figures.
+Personal academic homepage of Haoyu Zhou in the International Typographic (Swiss) Style:
+a 12-column grid, flush-left grotesque type (Inter / Inter Tight) and numbered sections, on warm paper
+with a vermilion accent. The About lead is set in Newsreader as the one serif voice.
 
 ## Editing content
 
